@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>physicals - NovagangRecords</title>
+    <title>clothing - NovagangRecords</title>
     <meta name="author" content="NovagangRecords" />
-    <meta name="description" content="NovagangRecords physical releases" />
+    <meta name="description" content="NovagangRecords clothing" />
     <link
       rel="stylesheet"
-      href="./releases_files/minimal-dark-styles-3364344753cbc319396e9d17916dcc1a.css"
+      href="../releases_files/minimal-dark-styles-3364344753cbc319396e9d17916dcc1a.css"
     />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
     <style>
@@ -63,7 +63,6 @@
         padding: 0 32px;
       }
 
-      /* ── header ── */
       .header {
         background: #fff;
         border-top: 1px solid rgba(0, 0, 0, 0.95);
@@ -133,7 +132,6 @@
         border-bottom: 1px solid rgba(0, 0, 0, 0.95);
       }
 
-      /* ── page animations ── */
       @keyframes headerIn {
         from { opacity: 0; transform: translateY(-8px); }
         to   { opacity: 1; transform: translateY(0); }
@@ -153,56 +151,55 @@
         animation: contentIn 0.5s ease 0.15s both;
       }
 
-      /* ── physicals grid ── */
-      .physicals-grid {
+      .clothing-grid {
         display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 0;
         align-items: start;
         margin: 0;
         padding: 0;
       }
 
-      .physicals-grid::before,
-      .physicals-grid::after {
+      .clothing-grid::before,
+      .clothing-grid::after {
         content: none !important;
         display: none !important;
       }
 
-      /* ── card ── */
-      .physical-card {
+      .clothing-card {
         display: block !important;
         float: none !important;
         clear: none !important;
         width: auto !important;
         margin: 0 !important;
         min-width: 0;
-        padding: 0 24px 40px;
+        padding: 40px 14px 40px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 0 !important;
         background: transparent !important;
         opacity: 0;
         transform: translateY(18px);
         transition: opacity 0.5s ease, transform 0.5s ease !important;
       }
 
-      .physical-card.in-view {
+      .clothing-card.in-view {
         opacity: 1;
         transform: translateY(0);
       }
 
-      .physical-card:hover,
-      .physical-card:active,
-      .physical-card:focus {
+      .clothing-card:hover,
+      .clothing-card:active,
+      .clothing-card:focus {
         background: transparent !important;
         color: var(--ink) !important;
       }
 
-      .physical-card:hover {
+      .clothing-card:hover {
         transform: translateY(-3px) !important;
       }
 
-      /* ── image ── */
-      .physical-card-image {
-        aspect-ratio: 4 / 3;
+.clothing-card-image {
+        aspect-ratio: 3 / 4;
         overflow: hidden;
         background: #fff;
         display: flex;
@@ -210,7 +207,7 @@
         justify-content: center;
       }
 
-      .physical-card-image img {
+      .clothing-card-image img {
         display: block;
         width: 100%;
         height: 100%;
@@ -218,56 +215,43 @@
         transition: transform 0.4s ease;
       }
 
-      .physical-card:hover .physical-card-image img {
-        transform: scale(1.04);
+      .clothing-card:hover .clothing-card-image img {
+        transform: scale(1.05);
       }
 
-      /* ── meta ── */
-      .physical-card-meta {
-        margin-top: 14px;
+      .clothing-card-meta {
+        margin-top: 10px;
+        padding-bottom: 8px;
       }
 
-      .physical-card-meta p {
+      .clothing-card-meta p {
         margin: 0;
       }
 
-      .physical-card-artist {
+      .clothing-card-artist {
         color: var(--ink);
       }
 
-      .physical-card-title {
+      .clothing-card-title {
         color: var(--ink);
         white-space: nowrap;
         overflow: hidden;
       }
 
-/* ── format block ── */
-      .physical-card-format {
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px solid var(--border);
-      }
-
-      .physical-card-format p {
-        margin: 0;
+      .clothing-card-price {
+        margin-top: 6px !important;
         color: var(--ink);
       }
 
-      .physical-card-status {
-        margin-top: 3px !important;
-        color: var(--ink);
-      }
-
-      .physical-card:hover .physical-card-meta p,
-      .physical-card:hover .physical-card-format p {
+      .clothing-card:hover .clothing-card-meta,
+      .clothing-card:hover .clothing-card-meta p {
         opacity: 1 !important;
         color: var(--ink) !important;
       }
 
-      /* ── responsive ── */
-      @media (max-width: 1100px) {
-        .physicals-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+      @media (max-width: 1200px) {
+        .clothing-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
       }
 
@@ -301,8 +285,9 @@
           padding-top: 64px;
         }
 
-        .physicals-grid {
-          grid-template-columns: 1fr;
+        .clothing-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 22px 14px;
         }
       }
     </style>
@@ -311,23 +296,23 @@
     <div class="page">
       <header class="header">
         <div class="inner">
-          <a href="index.html" class="logo-link" aria-label="NovagangRecords home">
-            <img src="assets/imp.png" alt="NovagangRecords" class="logo-img" />
+          <a href="../index.html" class="logo-link" aria-label="NovagangRecords home">
+            <img src="../assets/imp.png" alt="NovagangRecords" class="logo-img" />
           </a>
 
           <nav class="nav" aria-label="Primary">
             <ul class="nav-list">
               <li><a href="releases.html">releases</a></li>
-              <li><a href="clothing.html">clothing</a></li>
-              <li><a href="physicals.html" class="active">physicals</a></li>
-              <li><a href="releases.html">artists ▼</a></li>
+              <li><a href="clothing.html" class="active">clothing</a></li>
+              <li><a href="physicals.html">physicals</a></li>
+              <li><a href="releases.html#artists">artists ▼</a></li>
               <li><a href="#">mailing list</a></li>
             </ul>
           </nav>
 
           <nav class="nav nav-right" aria-label="Account">
             <ul class="nav-list">
-              <li><a href="#">terms of service</a></li>
+              <li><a href="tos.html">terms of service</a></li>
               <li><a href="#">cart</a></li>
             </ul>
           </nav>
@@ -336,62 +321,116 @@
 
       <main class="content">
         <div class="inner">
-          <section class="physicals-grid" aria-label="Physicals">
+          <section class="clothing-grid" aria-label="Clothing">
 
-            <a href="#" class="physical-card">
-              <div class="physical-card-image">
-                <img class="no-resize" src="assets/vinyl-1.png" alt="After All That I'm Still Here" />
+            <a href="../products/i-love-ng-shirt.html" class="clothing-card">
+              <div class="clothing-card-image">
+                <img class="no-resize" src="../assets/i-skull-ng.png" alt="I Love Novagang Shirt" />
               </div>
-              <div class="physical-card-meta">
-                <p class="physical-card-artist">Zephrxd</p>
-                <p class="physical-card-title">After All That I'm Still Here</p>
-              </div>
-              <div class="physical-card-format">
-                <p>12'' Vinyl</p>
-                <p class="physical-card-status">$44.00</p>
+              <div class="clothing-card-meta">
+                <p class="clothing-card-artist">NOVAGANG</p>
+                <p class="clothing-card-title">I Love Novagang Shirt</p>
+                <p class="clothing-card-price">$50.00</p>
               </div>
             </a>
 
-            <a href="#" class="physical-card">
-              <div class="physical-card-image">
-                <img class="no-resize" src="assets/alt-vinyl-1.png" alt="After All That I'm Still Here [v.2]" />
+            <a href="../products/business-plushie.html" class="clothing-card">
+              <div class="clothing-card-image">
+                <img class="no-resize" src="../assets/novagang-business-plushie.png" alt="Novagang Business Plushie" />
               </div>
-              <div class="physical-card-meta">
-                <p class="physical-card-artist">Zephrxd</p>
-                <p class="physical-card-title">After All That I'm Still Here [v.2]</p>
-              </div>
-              <div class="physical-card-format">
-                <p>12'' Vinyl</p>
-                <p class="physical-card-status">$44.00</p>
+              <div class="clothing-card-meta">
+                <p class="clothing-card-artist">NOVAGANG</p>
+                <p class="clothing-card-title">Novagang Business Plushie</p>
+                <p class="clothing-card-price">$45.00</p>
               </div>
             </a>
 
-            <a href="#" class="physical-card">
-              <div class="physical-card-image">
-                <img class="no-resize" src="assets/alt-vinyl-2.png" alt="After All That I'm Still Here [v.3]" />
+            <a href="clothing.html" class="clothing-card">
+              <div class="clothing-card-image">
+                <img class="no-resize" src="../assets/black-hat-front.png" alt="Novagang Military Cap" />
               </div>
-              <div class="physical-card-meta">
-                <p class="physical-card-artist">Zephrxd</p>
-                <p class="physical-card-title">After All That I'm Still Here [v.3]</p>
-              </div>
-              <div class="physical-card-format">
-                <p>12'' Vinyl</p>
-                <p class="physical-card-status">$50.00</p>
+              <div class="clothing-card-meta">
+                <p class="clothing-card-artist">NOVAGANG</p>
+                <p class="clothing-card-title">Novagang Military Cap</p>
+                <p class="clothing-card-price">$60.00</p>
               </div>
             </a>
 
-            <!-- To add a new physical, copy this block:
-            <a href="#" class="physical-card">
-              <div class="physical-card-image">
-                <img class="no-resize" src="assets/FILENAME.jpg" alt="TITLE" />
+            <a href="../products/i-love-ng-white-tee.html" class="clothing-card">
+              <div class="clothing-card-image">
+                <img class="no-resize" src="../assets/novagang-tee.png" alt="I Love Novagang Shirt 2024" />
               </div>
-              <div class="physical-card-meta">
-                <p class="physical-card-artist">ARTIST NAME</p>
-                <p class="physical-card-title">ALBUM TITLE</p>
+              <div class="clothing-card-meta">
+                <p class="clothing-card-artist">NOVAGANG</p>
+                <p class="clothing-card-title">I Love Novagang Shirt 2024</p>
+                <p class="clothing-card-price">$40.00</p>
               </div>
-              <div class="physical-card-format">
-                <p>FORMAT — EDITION DESCRIPTION</p>
-                <p class="physical-card-status">$XX.XX</p>
+            </a>
+
+            <a href="../products/n9-polo-white.html" class="clothing-card">
+              <div class="clothing-card-image">
+                <img class="no-resize" src="../assets/novagang-polo-white.png" alt="N9 Polo White" />
+              </div>
+              <div class="clothing-card-meta">
+                <p class="clothing-card-artist">NOVAGANG</p>
+                <p class="clothing-card-title">N9 Polo White</p>
+                <p class="clothing-card-price">$100.00</p>
+              </div>
+            </a>
+
+            <a href="../products/n9-polo-black.html" class="clothing-card">
+              <div class="clothing-card-image">
+                <img class="no-resize" src="../assets/novagang-polo-black.png" alt="N9 Polo Black" />
+              </div>
+              <div class="clothing-card-meta">
+                <p class="clothing-card-artist">NOVAGANG</p>
+                <p class="clothing-card-title">N9 Polo Black</p>
+                <p class="clothing-card-price">$100.00</p>
+              </div>
+            </a>
+
+            <a href="../products/metal-tee.html" class="clothing-card">
+              <div class="clothing-card-image">
+                <img class="no-resize" src="../assets/novagang-metal-tee.png" alt="Novagang Metal Tee" />
+              </div>
+              <div class="clothing-card-meta">
+                <p class="clothing-card-artist">NOVAGANG</p>
+                <p class="clothing-card-title">Novagang Metal Tee</p>
+                <p class="clothing-card-price">$35.00</p>
+              </div>
+            </a>
+
+            <a href="../products/aatish-white.html" class="clothing-card">
+              <div class="clothing-card-image">
+                <img class="no-resize" src="../assets/g2000_zeph_white_v2.png" alt="After All That I'm Still Here Shirt White" />
+              </div>
+              <div class="clothing-card-meta">
+                <p class="clothing-card-artist">Zephrxd</p>
+                <p class="clothing-card-title">After All That I'm Still Here Shirt White</p>
+                <p class="clothing-card-price">$35.00</p>
+              </div>
+            </a>
+
+            <a href="../products/aatish-black.html" class="clothing-card">
+              <div class="clothing-card-image">
+                <img class="no-resize" src="../assets/t-shirt-after-all-that-im-still-here-2.png" alt="After All That I'm Still Here Shirt Black" />
+              </div>
+              <div class="clothing-card-meta">
+                <p class="clothing-card-artist">Zephrxd</p>
+                <p class="clothing-card-title">After All That I'm Still Here Shirt Black</p>
+                <p class="clothing-card-price">$35.00</p>
+              </div>
+            </a>
+
+            <!-- To add a new item, copy this block:
+            <a href="#" class="clothing-card">
+              <div class="clothing-card-image">
+                <img class="no-resize" src="assets/FILENAME.jpg" alt="ITEM NAME" />
+              </div>
+              <div class="clothing-card-meta">
+                <p class="clothing-card-artist">ARTIST NAME</p>
+                <p class="clothing-card-title">ITEM NAME</p>
+                <p class="clothing-card-price">$PRICE</p>
               </div>
             </a>
             -->
@@ -400,27 +439,27 @@
         </div>
       </main>
     </div>
-    <script src="script.js"></script>
+    <script src="../js/script.js"></script>
     <script>
       (function () {
         var observer = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
               var el = entry.target;
-              var delay = (Array.from(el.parentNode.children).indexOf(el) % 3) * 80;
+              var delay = (Array.from(el.parentNode.children).indexOf(el) % 4) * 60;
               setTimeout(function () { el.classList.add('in-view'); }, delay);
               observer.unobserve(el);
             }
           });
         }, { threshold: 0.08 });
-        document.querySelectorAll('.physical-card').forEach(function (card) {
+        document.querySelectorAll('.clothing-card').forEach(function (card) {
           observer.observe(card);
         });
       })();
 
       (function () {
         function fixTitles() {
-          document.querySelectorAll('.physical-card-title').forEach(function (el) {
+          document.querySelectorAll('.clothing-card-title').forEach(function (el) {
             var full = el.getAttribute('data-full') || el.textContent.trim();
             el.setAttribute('data-full', full);
             el.textContent = full;
