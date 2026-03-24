@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>terms of service - NovagangRecords</title>
+    <meta name="author" content="NovagangRecords" />
+    <meta name="description" content="NovagangRecords terms of service" />
+    <link
+      rel="stylesheet"
+      href="./releases_files/minimal-dark-styles-3364344753cbc319396e9d17916dcc1a.css"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <style>
+      :root {
+        --ink: rgb(0, 0, 0);
+        --border: rgba(0, 0, 0, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #fff;
+      }
+
+      body {
+        background: #fff !important;
+        color: var(--ink) !important;
+        font-family: "Space Mono", "Courier New", monospace !important;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      body::after,
+      body::before {
+        display: none !important;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        min-height: 100vh;
+      }
+
+      .inner {
+        max-width: 1480px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      /* ── header ── */
+      .header {
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.95);
+      }
+
+      .header .inner {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        min-height: 72px;
+      }
+
+      .logo-link {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .logo-img {
+        display: block;
+        width: auto;
+        height: 42px;
+      }
+
+      .nav {
+        flex: 0 1 auto;
+        min-width: 0;
+      }
+
+      .nav-right {
+        margin-left: auto;
+      }
+
+      .nav-list {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        white-space: nowrap;
+      }
+
+      .nav-list a {
+        display: inline-block;
+        line-height: 1;
+        color: var(--ink) !important;
+        background: transparent !important;
+        text-decoration: none !important;
+      }
+
+      .nav-list a:visited,
+      .nav-list a:hover,
+      .nav-list a:active,
+      .nav-list a:focus {
+        color: var(--ink) !important;
+        background: transparent !important;
+      }
+
+      .nav-list a.active {
+        position: relative;
+      }
+
+      .nav-list a.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: -4px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.95);
+      }
+
+      /* ── animations ── */
+      @keyframes headerIn {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes contentIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .header {
+        animation: headerIn 0.4s ease forwards;
+      }
+
+      .content {
+        padding: 100px 0 80px;
+        animation: contentIn 0.5s ease 0.15s both;
+      }
+
+      /* ── tos layout ── */
+      .tos-wrap {
+        max-width: 760px;
+      }
+
+      .tos-wrap h1 {
+        font-size: 18px;
+        font-weight: normal;
+        letter-spacing: 0.04em;
+        margin: 0 0 48px;
+        font-family: "Space Mono", "Courier New", monospace;
+        text-transform: lowercase;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 16px;
+      }
+
+      .tos-section {
+        margin-bottom: 48px;
+      }
+
+      .tos-section h2 {
+        font-size: 14px;
+        font-weight: normal;
+        font-family: "Space Mono", "Courier New", monospace;
+        text-transform: lowercase;
+        letter-spacing: 0.03em;
+        margin: 0 0 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .tos-section h3 {
+        font-size: 14px;
+        font-weight: normal;
+        font-family: "Space Mono", "Courier New", monospace;
+        text-transform: lowercase;
+        margin: 24px 0 8px;
+        color: var(--ink);
+      }
+
+      .tos-section p {
+        margin: 0 0 12px;
+        color: var(--ink);
+      }
+
+      .tos-section p:last-child {
+        margin-bottom: 0;
+      }
+
+      .tos-notice {
+        border-left: 2px solid var(--border);
+        padding: 10px 16px;
+        margin: 16px 0;
+        background: rgba(0, 0, 0, 0.03);
+      }
+
+      .tos-notice strong {
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-size: 12px;
+      }
+
+      .tos-alert {
+        font-size: 13px;
+        letter-spacing: 0.02em;
+        padding: 12px 16px;
+        border: 1px solid var(--border);
+        margin-top: 16px;
+      }
+
+      a.tos-email {
+        text-decoration: underline !important;
+        text-underline-offset: 3px;
+      }
+
+      /* ── responsive ── */
+      @media (max-width: 900px) {
+        .inner {
+          padding: 0 24px;
+        }
+
+        .header .inner {
+          flex-wrap: wrap;
+          gap: 14px;
+          padding-top: 14px;
+          padding-bottom: 14px;
+        }
+
+        .nav-right {
+          margin-left: 0;
+        }
+
+        .nav-list {
+          flex-wrap: wrap;
+          gap: 14px;
+        }
+
+        .content {
+          padding-top: 64px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="inner">
+          <a href="index.html" class="logo-link" aria-label="NovagangRecords home">
+            <img src="assets/imp.png" alt="NovagangRecords" class="logo-img" />
+          </a>
+
+          <nav class="nav" aria-label="Primary">
+            <ul class="nav-list">
+              <li><a href="releases.html">releases</a></li>
+              <li><a href="clothing.html">clothing</a></li>
+              <li><a href="physicals.html">physicals</a></li>
+              <li><a href="releases.html">artists ▼</a></li>
+              <li><a href="#">mailing list</a></li>
+            </ul>
+          </nav>
+
+          <nav class="nav nav-right" aria-label="Account">
+            <ul class="nav-list">
+              <li><a href="tos.html" class="active">terms of service</a></li>
+              <li><a href="#">cart</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main class="content">
+        <div class="inner">
+          <div class="tos-wrap">
+            <h1>terms of service</h1>
+
+            <!-- ── REFUND POLICY ── -->
+            <section class="tos-section">
+              <h2>refund policy</h2>
+
+              <h3>returns</h3>
+              <p>
+                There are <strong>NO</strong> refunds or returns unless the item is defective.
+                In that event, please contact us via
+                <a class="tos-email" href="mailto:novagangxx@gmail.com">novagangxx@gmail.com</a>.
+              </p>
+
+              <h3>refunds (if applicable)</h3>
+              <p>
+                Once your return is received and inspected, we will send you an email to notify
+                you that we have received your returned item. We will also notify you of the
+                approval or rejection of your refund.
+              </p>
+              <p>
+                If you are approved, then your refund will be processed, and a credit will
+                automatically be applied to your credit card or original method of payment,
+                within a certain amount of days.
+              </p>
+
+              <h3>late or missing refunds (if applicable)</h3>
+              <p>
+                If you haven't received a refund yet, first check your bank account again.
+                Then contact your credit card company — it may take some time before your
+                refund is officially posted. Next, contact your bank. There is often some
+                processing time before a refund is posted.
+              </p>
+              <p>
+                If you've done all of this and you still have not received your refund yet,
+                please contact us at
+                <a class="tos-email" href="mailto:novagangxx@gmail.com">novagangxx@gmail.com</a>.
+              </p>
+
+              <h3>sale items (if applicable)</h3>
+              <p>
+                Only regular priced items may be refunded. Unfortunately, sale items, custom
+                pieces, and pre-orders cannot be refunded.
+              </p>
+
+              <h3>exchanges (if applicable)</h3>
+              <p>
+                We only replace items if they are defective or damaged. If you need to exchange
+                it for the same item, send us an email at
+                <a class="tos-email" href="mailto:novagangxx@gmail.com">novagangxx@gmail.com</a>.
+              </p>
+
+              <h3>shipping returns</h3>
+              <p>
+                To return your product, contact us via
+                <a class="tos-email" href="mailto:novagangxx@gmail.com">novagangxx@gmail.com</a>.
+                You will be responsible for paying for your own shipping costs for returning
+                your item. Shipping costs are non-refundable. If you receive a refund, the
+                cost of return shipping will be deducted from your refund.
+              </p>
+              <p>
+                Keep in mind that if you order outside the US, there can be variable fees such
+                as customs or taxes that you are responsible for. Depending on where you live,
+                the time it may take for your exchanged product to reach you may vary.
+              </p>
+              <p>
+                If you are shipping an item over $70, you should consider using a trackable
+                shipping service or purchasing shipping insurance. We don't guarantee that we
+                will receive your returned item.
+              </p>
+            </section>
+
+            <!-- ── SHIPPING POLICY ── -->
+            <section class="tos-section">
+              <h2>shipping policy</h2>
+
+              <div class="tos-notice">
+                <strong>Special Notice — Beanies (as of 6/28/24)</strong>
+                <p>
+                  Please note that the order period lasts three days, with production beginning
+                  once the order period ends. It may take up to 10–15 business days to ship.
+                  In the case that the number of orders ends up being more than anticipated,
+                  there may be a delay of an additional week. If there are any updates (delays,
+                  shipping, etc.), we will post via Instagram. Thank you for your understanding.
+                </p>
+              </div>
+
+              <div class="tos-notice">
+                <strong>Special Notice — "CONVICT KILLER" Tees (as of 6/28/24)</strong>
+                <p>
+                  Please note that the order period lasts three days, with production beginning
+                  once the order period ends. In the case that the number of orders ends up
+                  being more than anticipated, there may be a delay of an additional week.
+                  If there are any updates (delays, shipping, etc.), we will post via Instagram.
+                  Thank you for your understanding.
+                </p>
+              </div>
+
+              <h3>failure of address / certainty of address</h3>
+              <p>
+                Addresses being wrong is <strong>not</strong> our liability. We have an
+                automatic system that captures your address as entered at checkout. You are
+                responsible for the validity of your address. Failure of address cannot be
+                held against us and does not guarantee a refund — so be sure not to enter the
+                wrong address in our checkout forms.
+              </p>
+              <p>
+                USPS labels are generated using information provided at checkout. If your
+                package is returned to us and not received, we cannot promise a refund unless
+                we deem it appropriate on a strictly situational basis.
+              </p>
+
+              <h3>international shipping</h3>
+              <p>
+                USPS international mail services go to more than 180 countries. Exchange or
+                return shipping for international orders may vary in time due to alternative
+                delivery methods. Please be patient.
+              </p>
+              <p>
+                Instagram: <a class="tos-email" href="https://instagram.com/xnovagang" target="_blank">@xnovagang</a>
+                &nbsp;·&nbsp;
+                <a class="tos-email" href="mailto:novagangxx@gmail.com">novagangxx@gmail.com</a>
+              </p>
+
+              <div class="tos-alert">
+                shirts may take 3–4 weeks to ship.
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

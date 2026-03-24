@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>After All That, Im Still Here. — Zephrxd</title>
+    <meta name="author" content="NovagangRecords" />
+    <meta name="description" content="After All That, Im Still Here. by Zephrxd — NovagangRecords" />
+    <link rel="stylesheet" href="./releases_files/minimal-dark-styles-3364344753cbc319396e9d17916dcc1a.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <style>
+      :root {
+        --ink: rgb(0, 0, 0);
+        --border: rgba(0, 0, 0, 0.22);
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background: #fff;
+      }
+
+      body {
+        background: #fff !important;
+        color: var(--ink) !important;
+        font-family: "Space Mono", "Courier New", monospace !important;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      body::after, body::before { display: none !important; }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page { min-height: 100vh; }
+
+      .inner {
+        max-width: 1480px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      /* ── header ── */
+      .header {
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.95);
+      }
+
+      .header .inner {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        min-height: 72px;
+      }
+
+      .logo-link {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .logo-img {
+        display: block;
+        width: auto;
+        height: 42px;
+      }
+
+      .nav { flex: 0 1 auto; min-width: 0; }
+      .nav-right { margin-left: auto; }
+
+      .nav-list {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        white-space: nowrap;
+      }
+
+      .nav-list a {
+        display: inline-block;
+        line-height: 1;
+        color: var(--ink) !important;
+        background: transparent !important;
+        text-decoration: none !important;
+      }
+
+      .nav-list a:visited,
+      .nav-list a:hover,
+      .nav-list a:active,
+      .nav-list a:focus {
+        color: var(--ink) !important;
+        background: transparent !important;
+      }
+
+      .nav-list a.active { position: relative; }
+      .nav-list a.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: -4px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.95);
+      }
+
+      /* ── animations ── */
+      @keyframes headerIn {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes contentIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .header { animation: headerIn 0.4s ease forwards; }
+      .content {
+        padding: 80px 0 80px;
+        animation: contentIn 0.5s ease 0.15s both;
+      }
+
+      /* ── album hero ── */
+      .album-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 64px;
+        align-items: start;
+        margin-bottom: 72px;
+      }
+
+      .album-cover {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        background: #f5f5f5;
+      }
+
+      .album-cover img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ── album info ── */
+      .album-info {
+        padding-top: 8px;
+      }
+
+      .album-title {
+        font-size: 26px;
+        font-weight: normal;
+        font-family: "Space Mono", "Courier New", monospace;
+        margin: 0 0 10px;
+        line-height: 1.2;
+        color: var(--ink);
+      }
+
+      .album-artist {
+        font-size: 14px;
+        margin: 0 0 6px;
+        color: var(--ink);
+      }
+
+      .album-date {
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.6);
+        margin: 0 0 24px;
+      }
+
+      .album-divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 0 0 24px;
+      }
+
+      /* ── streaming links ── */
+      .stream-label {
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.5);
+        margin: 0 0 12px;
+      }
+
+      .stream-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .stream-btn {
+        display: inline-block;
+        padding: 8px 16px;
+        border: 1px solid var(--border);
+        font-family: "Space Mono", "Courier New", monospace;
+        font-size: 13px;
+        color: var(--ink);
+        cursor: pointer;
+        background: transparent;
+        transition: background 0.15s ease, border-color 0.15s ease;
+        text-decoration: none;
+      }
+
+      .stream-btn:hover {
+        background: rgba(0, 0, 0, 0.06) !important;
+        border-color: rgba(0, 0, 0, 0.5);
+      }
+
+      /* ── tracklist ── */
+      .tracklist-section {
+        border-top: 1px solid var(--border);
+        padding-top: 32px;
+      }
+
+      .tracklist-heading {
+        font-size: 12px;
+        font-weight: normal;
+        font-family: "Space Mono", "Courier New", monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(0, 0, 0, 0.5);
+        margin: 0 0 16px;
+      }
+
+      .tracklist {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .tracklist tr {
+        border-bottom: 1px solid var(--border);
+        transition: background 0.12s ease;
+      }
+
+      .tracklist tr:first-child {
+        border-top: 1px solid var(--border);
+      }
+
+      .tracklist tr:hover {
+        background: rgba(0, 0, 0, 0.04);
+      }
+
+      .tracklist td {
+        padding: 12px 8px;
+        color: var(--ink);
+        vertical-align: middle;
+      }
+
+      .track-num {
+        width: 36px;
+        color: rgba(0, 0, 0, 0.4);
+        font-size: 13px;
+        text-align: right;
+        padding-right: 16px !important;
+      }
+
+      .track-name {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .track-plays {
+        white-space: nowrap;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.45);
+        text-align: right;
+        padding-left: 24px !important;
+      }
+
+      /* ── responsive ── */
+      @media (max-width: 900px) {
+        .inner { padding: 0 24px; }
+
+        .header .inner {
+          flex-wrap: wrap;
+          gap: 14px;
+          padding-top: 14px;
+          padding-bottom: 14px;
+        }
+
+        .nav-right { margin-left: 0; }
+        .nav-list { flex-wrap: wrap; gap: 14px; }
+
+        .content { padding-top: 48px; }
+
+        .album-hero {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .album-title { font-size: 20px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="inner">
+          <a href="index.html" class="logo-link" aria-label="NovagangRecords home">
+            <img src="assets/imp.png" alt="NovagangRecords" class="logo-img" />
+          </a>
+
+          <nav class="nav" aria-label="Primary">
+            <ul class="nav-list">
+              <li><a href="releases.html" class="active">releases</a></li>
+              <li><a href="clothing.html">clothing</a></li>
+              <li><a href="physicals.html">physicals</a></li>
+              <li><a href="releases.html">artists ▼</a></li>
+              <li><a href="#">mailing list</a></li>
+            </ul>
+          </nav>
+
+          <nav class="nav nav-right" aria-label="Account">
+            <ul class="nav-list">
+              <li><a href="tos.html">terms of service</a></li>
+              <li><a href="#">cart</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main class="content">
+        <div class="inner">
+
+          <!-- ── hero ── -->
+          <div class="album-hero">
+            <div class="album-cover">
+              <img src="assets/AfterAllThatImStillHere..jpg" alt="After All That, Im Still Here." />
+            </div>
+
+            <div class="album-info">
+              <h1 class="album-title">After All That, Im Still Here.</h1>
+              <p class="album-artist">Zephrxd</p>
+              <p class="album-date">March 4, 2026</p>
+
+              <hr class="album-divider" />
+
+              <p class="stream-label">Stream</p>
+              <div class="stream-links">
+                <a href="#" class="stream-btn">Spotify</a>
+                <a href="#" class="stream-btn">Apple Music</a>
+                <a href="#" class="stream-btn">SoundCloud</a>
+                <a href="#" class="stream-btn">YouTube</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── tracklist ── -->
+          <div class="tracklist-section">
+            <p class="tracklist-heading">Tracklist</p>
+            <table class="tracklist">
+              <tbody>
+                <tr>
+                  <td class="track-num">1</td>
+                  <td class="track-name">Thank God</td>
+                  <td class="track-plays">1:56</td>
+                </tr>
+                <tr>
+                  <td class="track-num">2</td>
+                  <td class="track-name">Ear On The Roof,</td>
+                  <td class="track-plays">0:27</td>
+                </tr>
+                <tr>
+                  <td class="track-num">3</td>
+                  <td class="track-name">Brain Fog</td>
+                  <td class="track-plays">2:26</td>
+                </tr>
+                <tr>
+                  <td class="track-num">4</td>
+                  <td class="track-name">Dysphoric Over The Fit</td>
+                  <td class="track-plays">2:18</td>
+                </tr>
+                <tr>
+                  <td class="track-num">5</td>
+                  <td class="track-name">Trying Human</td>
+                  <td class="track-plays">1:58</td>
+                </tr>
+                <tr>
+                  <td class="track-num">6</td>
+                  <td class="track-name">Bobby</td>
+                  <td class="track-plays">1:35</td>
+                </tr>
+                <tr>
+                  <td class="track-num">7</td>
+                  <td class="track-name">Cracks For Macintosh</td>
+                  <td class="track-plays">1:46</td>
+                </tr>
+                <tr>
+                  <td class="track-num">8</td>
+                  <td class="track-name">Medic</td>
+                  <td class="track-plays">1:49</td>
+                </tr>
+                <tr>
+                  <td class="track-num">9</td>
+                  <td class="track-name">Sine Wave Convos</td>
+                  <td class="track-plays">2:21</td>
+                </tr>
+                <tr>
+                  <td class="track-num">10</td>
+                  <td class="track-name">Doing Bad In The Rat Race</td>
+                  <td class="track-plays">2:12</td>
+                </tr>
+                <tr>
+                  <td class="track-num">11</td>
+                  <td class="track-name">Attached</td>
+                  <td class="track-plays">1:39</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

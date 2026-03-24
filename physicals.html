@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>physicals - NovagangRecords</title>
+    <meta name="author" content="NovagangRecords" />
+    <meta name="description" content="NovagangRecords physical releases" />
+    <link
+      rel="stylesheet"
+      href="./releases_files/minimal-dark-styles-3364344753cbc319396e9d17916dcc1a.css"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <style>
+      :root {
+        --ink: rgb(0, 0, 0);
+        --border: rgba(0, 0, 0, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #fff;
+      }
+
+      body {
+        background: #fff !important;
+        color: var(--ink) !important;
+        font-family: "Space Mono", "Courier New", monospace !important;
+        font-size: 14px;
+        line-height: 1.35;
+      }
+
+      body::after,
+      body::before {
+        display: none !important;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        min-height: 100vh;
+      }
+
+      .inner {
+        max-width: 1480px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      /* ── header ── */
+      .header {
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.95);
+      }
+
+      .header .inner {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        min-height: 72px;
+      }
+
+      .logo-link {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .logo-img {
+        display: block;
+        width: auto;
+        height: 42px;
+      }
+
+      .nav {
+        flex: 0 1 auto;
+        min-width: 0;
+      }
+
+      .nav-right {
+        margin-left: auto;
+      }
+
+      .nav-list {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        white-space: nowrap;
+      }
+
+      .nav-list a {
+        display: inline-block;
+        line-height: 1;
+        color: var(--ink) !important;
+        background: transparent !important;
+        text-decoration: none !important;
+      }
+
+      .nav-list a:visited,
+      .nav-list a:hover,
+      .nav-list a:active,
+      .nav-list a:focus {
+        color: var(--ink) !important;
+        background: transparent !important;
+      }
+
+      .nav-list a.active {
+        position: relative;
+      }
+
+      .nav-list a.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: -4px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.95);
+      }
+
+      /* ── page animations ── */
+      @keyframes headerIn {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes contentIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+
+      .header {
+        animation: headerIn 0.4s ease forwards;
+      }
+
+      .content {
+        padding: 120px 0 56px;
+        animation: contentIn 0.5s ease 0.15s both;
+      }
+
+      /* ── physicals grid ── */
+      .physicals-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        align-items: start;
+        margin: 0;
+        padding: 0;
+      }
+
+      .physicals-grid::before,
+      .physicals-grid::after {
+        content: none !important;
+        display: none !important;
+      }
+
+      /* ── card ── */
+      .physical-card {
+        display: block !important;
+        float: none !important;
+        clear: none !important;
+        width: auto !important;
+        margin: 0 !important;
+        min-width: 0;
+        padding: 0 24px 40px;
+        background: transparent !important;
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.5s ease, transform 0.5s ease !important;
+      }
+
+      .physical-card.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .physical-card:hover,
+      .physical-card:active,
+      .physical-card:focus {
+        background: transparent !important;
+        color: var(--ink) !important;
+      }
+
+      .physical-card:hover {
+        transform: translateY(-3px) !important;
+      }
+
+      /* ── image ── */
+      .physical-card-image {
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .physical-card-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.4s ease;
+      }
+
+      .physical-card:hover .physical-card-image img {
+        transform: scale(1.04);
+      }
+
+      /* ── meta ── */
+      .physical-card-meta {
+        margin-top: 14px;
+      }
+
+      .physical-card-meta p {
+        margin: 0;
+      }
+
+      .physical-card-artist {
+        color: var(--ink);
+      }
+
+      .physical-card-title {
+        color: var(--ink);
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+/* ── format block ── */
+      .physical-card-format {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--border);
+      }
+
+      .physical-card-format p {
+        margin: 0;
+        color: var(--ink);
+      }
+
+      .physical-card-status {
+        margin-top: 3px !important;
+        color: var(--ink);
+      }
+
+      .physical-card:hover .physical-card-meta p,
+      .physical-card:hover .physical-card-format p {
+        opacity: 1 !important;
+        color: var(--ink) !important;
+      }
+
+      /* ── responsive ── */
+      @media (max-width: 1100px) {
+        .physicals-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 900px) {
+        .inner {
+          padding: 0 24px;
+        }
+
+        .header .inner {
+          flex-wrap: wrap;
+          gap: 14px;
+          padding-top: 14px;
+          padding-bottom: 14px;
+        }
+
+        .nav-right {
+          margin-left: 0;
+        }
+
+        .nav-list {
+          flex-wrap: wrap;
+          gap: 14px;
+        }
+
+        .nav-list a.active::after {
+          width: 100%;
+          bottom: -4px;
+        }
+
+        .content {
+          padding-top: 64px;
+        }
+
+        .physicals-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="inner">
+          <a href="index.html" class="logo-link" aria-label="NovagangRecords home">
+            <img src="assets/imp.png" alt="NovagangRecords" class="logo-img" />
+          </a>
+
+          <nav class="nav" aria-label="Primary">
+            <ul class="nav-list">
+              <li><a href="releases.html">releases</a></li>
+              <li><a href="clothing.html">clothing</a></li>
+              <li><a href="physicals.html" class="active">physicals</a></li>
+              <li><a href="releases.html">artists ▼</a></li>
+              <li><a href="#">mailing list</a></li>
+            </ul>
+          </nav>
+
+          <nav class="nav nav-right" aria-label="Account">
+            <ul class="nav-list">
+              <li><a href="#">terms of service</a></li>
+              <li><a href="#">cart</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main class="content">
+        <div class="inner">
+          <section class="physicals-grid" aria-label="Physicals">
+
+            <a href="#" class="physical-card">
+              <div class="physical-card-image">
+                <img class="no-resize" src="assets/vinyl-1.png" alt="After All That I'm Still Here" />
+              </div>
+              <div class="physical-card-meta">
+                <p class="physical-card-artist">Zephrxd</p>
+                <p class="physical-card-title">After All That I'm Still Here</p>
+              </div>
+              <div class="physical-card-format">
+                <p>12'' Vinyl</p>
+                <p class="physical-card-status">$44.00</p>
+              </div>
+            </a>
+
+            <a href="#" class="physical-card">
+              <div class="physical-card-image">
+                <img class="no-resize" src="assets/alt-vinyl-1.png" alt="After All That I'm Still Here [v.2]" />
+              </div>
+              <div class="physical-card-meta">
+                <p class="physical-card-artist">Zephrxd</p>
+                <p class="physical-card-title">After All That I'm Still Here [v.2]</p>
+              </div>
+              <div class="physical-card-format">
+                <p>12'' Vinyl</p>
+                <p class="physical-card-status">$44.00</p>
+              </div>
+            </a>
+
+            <a href="#" class="physical-card">
+              <div class="physical-card-image">
+                <img class="no-resize" src="assets/alt-vinyl-2.png" alt="After All That I'm Still Here [v.3]" />
+              </div>
+              <div class="physical-card-meta">
+                <p class="physical-card-artist">Zephrxd</p>
+                <p class="physical-card-title">After All That I'm Still Here [v.3]</p>
+              </div>
+              <div class="physical-card-format">
+                <p>12'' Vinyl</p>
+                <p class="physical-card-status">$50.00</p>
+              </div>
+            </a>
+
+            <!-- To add a new physical, copy this block:
+            <a href="#" class="physical-card">
+              <div class="physical-card-image">
+                <img class="no-resize" src="assets/FILENAME.jpg" alt="TITLE" />
+              </div>
+              <div class="physical-card-meta">
+                <p class="physical-card-artist">ARTIST NAME</p>
+                <p class="physical-card-title">ALBUM TITLE</p>
+              </div>
+              <div class="physical-card-format">
+                <p>FORMAT — EDITION DESCRIPTION</p>
+                <p class="physical-card-status">$XX.XX</p>
+              </div>
+            </a>
+            -->
+
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      (function () {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              var delay = (Array.from(el.parentNode.children).indexOf(el) % 3) * 80;
+              setTimeout(function () { el.classList.add('in-view'); }, delay);
+              observer.unobserve(el);
+            }
+          });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.physical-card').forEach(function (card) {
+          observer.observe(card);
+        });
+      })();
+
+      (function () {
+        function fixTitles() {
+          document.querySelectorAll('.physical-card-title').forEach(function (el) {
+            var full = el.getAttribute('data-full') || el.textContent.trim();
+            el.setAttribute('data-full', full);
+            el.textContent = full;
+            if (el.scrollWidth <= el.clientWidth) return;
+            var lo = 0, hi = full.length;
+            while (hi - lo > 1) {
+              var mid = (lo + hi) >> 1;
+              el.textContent = full.slice(0, mid).trimEnd() + '...';
+              if (el.scrollWidth <= el.clientWidth) lo = mid;
+              else hi = mid;
+            }
+            el.textContent = full.slice(0, lo).trimEnd() + '...';
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', fixTitles);
+        } else {
+          fixTitles();
+        }
+        window.addEventListener('resize', fixTitles);
+      })();
+    </script>
+  </body>
+</html>
