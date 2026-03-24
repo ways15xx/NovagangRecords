@@ -167,6 +167,22 @@
         background: rgba(0,0,0,0.025);
       }
 
+      .artist-card:hover,
+      .artist-card:active,
+      .artist-card:focus,
+      .artist-card:hover .artist-card-name,
+      .artist-card:hover .artist-card-release,
+      .artist-card:hover .artist-card-tag,
+      .artist-card:active .artist-card-name,
+      .artist-card:active .artist-card-release,
+      .artist-card:active .artist-card-tag,
+      .artist-card:focus .artist-card-name,
+      .artist-card:focus .artist-card-release,
+      .artist-card:focus .artist-card-tag {
+        color: var(--ink) !important;
+        opacity: 1 !important;
+      }
+
       .artist-card.revealed {
         opacity: 1;
         transform: translateY(0);
@@ -209,6 +225,19 @@
 
       .artist-card-text:hover {
         background: rgba(0,0,0,0.025);
+      }
+
+      .artist-card-text:hover,
+      .artist-card-text:active,
+      .artist-card-text:focus,
+      .artist-card-text:hover .artist-card-name,
+      .artist-card-text:hover .artist-card-release,
+      .artist-card-text:active .artist-card-name,
+      .artist-card-text:active .artist-card-release,
+      .artist-card-text:focus .artist-card-name,
+      .artist-card-text:focus .artist-card-release {
+        color: var(--ink) !important;
+        opacity: 1 !important;
       }
 
       .artist-card-text.revealed {
