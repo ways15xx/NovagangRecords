@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -250,67 +250,7 @@
         color: rgba(0, 0, 0, 0.4);
         text-transform: lowercase;
       }
-
-      .artists-dropdown {
-        position: relative;
-      }
-
-      .artists-toggle {
-        cursor: pointer;
-        user-select: none;
-      }
-
-      .artists-menu {
-        position: absolute;
-        top: calc(100% + 14px);
-        left: 0;
-        background: #fff;
-        border: 1px solid var(--border);
-        min-width: 160px;
-        z-index: 200;
-        padding: 6px 0;
-        list-style: none !important;
-        margin: 0 !important;
-        opacity: 0;
-        transform: translateY(-6px);
-        pointer-events: none;
-        transition: opacity 0.18s ease, transform 0.18s ease;
-      }
-
-      .artists-menu.open {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      .artists-menu li {
-        display: block !important;
-      }
-
-      .artists-menu li a {
-        display: block !important;
-        padding: 7px 16px !important;
-        white-space: nowrap;
-        color: var(--ink) !important;
-        background: transparent !important;
-        transition: none !important;
-        text-decoration: none !important;
-        font-size: 14px;
-      }
-
-      .artists-menu li a:hover {
-        background: rgba(0, 0, 0, 0.06) !important;
-      }
-
-      .artists-menu li a.selected {
-        text-decoration: underline !important;
-      }
-
-      .release-card.filtered-out {
-        display: none !important;
-      }
-
-      @media (max-width: 1200px) {
+@media (max-width: 1200px) {
         .release-grid {
           grid-template-columns: repeat(4, minmax(0, 1fr));
         }
@@ -366,10 +306,7 @@
               <li><a href="releases.html" class="active">releases</a></li>
               <li><a href="clothing.html">clothing</a></li>
               <li><a href="physicals.html">physicals</a></li>
-              <li class="artists-dropdown">
-                <a href="#" class="artists-toggle">artists ▼</a>
-                <ul class="artists-menu" id="artists-menu"></ul>
-              </li>
+              <li><a href="artists.html">artists</a></li>
               <li><a href="#">mailing list</a></li>
             </ul>
           </nav>
@@ -386,7 +323,7 @@
       <main class="content">
         <div class="inner">
           <section class="release-grid" aria-label="Releases">
-            <a href="../albums/exit-2b.html" class="release-card" data-artist="B0YG1RL">
+            <a href="../albums/exit-2b.html" class="release-card">
               <div class="release-card-image">
                 <img
                   class="no-resize"
@@ -400,7 +337,7 @@
               </div>
             </a>
 
-            <a href="../albums/after-all-that.html" class="release-card" data-artist="Zephrxd">
+            <a href="../albums/after-all-that.html" class="release-card">
               <div class="release-card-image">
                 <img
                   class="no-resize"
@@ -414,7 +351,7 @@
               </div>
             </a>
 
-            <a href="../albums/i-am-the-temper.html" class="release-card" data-artist="prblm">
+            <a href="../albums/i-am-the-temper.html" class="release-card">
               <div class="release-card-image">
                 <img
                   class="no-resize"
@@ -429,7 +366,7 @@
             </a>
 
             <!-- To add a new release, copy this block:
-            <a href="#" class="release-card" data-artist="ARTIST">
+            <a href="#" class="release-card">
               <div class="release-card-image">
                 <img class="no-resize" src="assets/FILENAME.jpg" alt="TITLE" />
               </div>
@@ -445,88 +382,6 @@
     </div>
     <script src="../js/script.js"></script>
     <script>
-      (function () {
-        var toggle = document.querySelector('.artists-toggle');
-        var menu = document.getElementById('artists-menu');
-        var activeArtist = null;
-
-        var artists = [
-          'angelus', 'B0YG1RL', 'Exodus1900', 'gv1nn',
-          'kasper gem', 'KAY NIVE$', 'kingfelix', 'prblm',
-          'quinn', 'Trauma', 'Ways', 'Zephrxd', 'Zootzie'
-        ];
-
-        artists.forEach(function (name) {
-          var li = document.createElement('li');
-          var a = document.createElement('a');
-          a.href = '#';
-          a.textContent = name;
-          li.appendChild(a);
-          menu.appendChild(li);
-        });
-
-        function reAnimate(visibleCards) {
-          visibleCards.forEach(function (card) {
-            card.style.setProperty('transition', 'none', 'important');
-            card.classList.remove('in-view');
-          });
-          requestAnimationFrame(function () {
-            requestAnimationFrame(function () {
-              visibleCards.forEach(function (card) {
-                card.style.removeProperty('transition');
-              });
-              visibleCards.forEach(function (card, i) {
-                setTimeout(function () {
-                  card.classList.add('in-view');
-                }, i * 80);
-              });
-            });
-          });
-        }
-
-        function setFilter(artist) {
-          if (artist === activeArtist) artist = null;
-          activeArtist = artist;
-
-          menu.querySelectorAll('a').forEach(function (a) {
-            a.classList.toggle('selected', !!artist && a.textContent === artist);
-          });
-
-          var visibleCards = [];
-          document.querySelectorAll('.release-card').forEach(function (card) {
-            var ca = card.getAttribute('data-artist');
-            if (!artist || ca === artist) {
-              card.classList.remove('filtered-out');
-              visibleCards.push(card);
-            } else {
-              card.classList.add('filtered-out');
-            }
-          });
-
-          reAnimate(visibleCards);
-          toggle.textContent = artist ? 'artists (' + artist + ') ▼' : 'artists ▼';
-          menu.classList.remove('open');
-        }
-
-        toggle.addEventListener('click', function (e) {
-          e.preventDefault();
-          menu.classList.toggle('open');
-        });
-
-        menu.addEventListener('click', function (e) {
-          e.preventDefault();
-          var a = e.target.closest('a');
-          if (!a) return;
-          setFilter(a.textContent);
-        });
-
-        document.addEventListener('click', function (e) {
-          if (!e.target.closest('.artists-dropdown')) {
-            menu.classList.remove('open');
-          }
-        });
-      })();
-
       (function () {
         var observer = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry, i) {
@@ -570,3 +425,4 @@
     </script>
   </body>
 </html>
+
