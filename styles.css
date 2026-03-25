@@ -258,7 +258,7 @@ body {
 ═══════════════════ */
 .artists-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: var(--rule);
   border-left: var(--rule);
 }
@@ -597,5 +597,5 @@ body {
   .release-grid { grid-template-columns: repeat(2, 1fr); }
   .clothing-grid { grid-template-columns: 1fr; }
   .physical-grid { grid-template-columns: 1fr; }
-  .artists-grid { grid-template-columns: 1fr; }
+  .artists-grid { grid-template-columns: repeat(2, 1fr); }
 }
