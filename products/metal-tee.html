@@ -1,154 +1,123 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Novagang Metal Tee - NovagangRecords</title>
-    <link rel="stylesheet" href="../releases_files/minimal-dark-styles-3364344753cbc319396e9d17916dcc1a.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
-    <style>
-      :root { --ink: rgb(63,57,111); --border: rgba(63,57,111,0.22); }
-      * { box-sizing: border-box; }
-      html,body { margin:0; min-height:100%; background:#fff; }
-      body { background:#fff !important; color:var(--ink) !important; font-family:"Space Mono","Courier New",monospace !important; font-size:14px; line-height:1.35; }
-      body::after,body::before { display:none !important; }
-      a { color:inherit; text-decoration:none; }
-      ul { list-style:none; margin:0; padding:0; }
-      .page { min-height:100vh; }
-      .inner { max-width:1480px; margin:0 auto; padding:0 32px; }
-      .header { background:#fff; border-top:1px solid rgba(63,57,111,0.95); }
-      .header .inner { display:flex; align-items:center; gap:26px; min-height:72px; }
-      .logo-link { flex:0 0 auto; display:inline-flex; align-items:center; }
-      .logo-img { display:block; width:auto; height:42px; }
-      .nav { flex:0 1 auto; min-width:0; }
-      .nav-right { margin-left:auto; }
-      .nav-list { display:flex; align-items:center; gap:22px; white-space:nowrap; }
-      .nav-list a { display:inline-block; line-height:1; color:var(--ink) !important; background:transparent !important; text-decoration:none !important; }
-      .nav-list a:visited,.nav-list a:hover,.nav-list a:active,.nav-list a:focus { color:var(--ink) !important; background:transparent !important; }
-      .nav-list a.active { position:relative; }
-      .nav-list a.active::after { content:""; position:absolute; left:0; width:100%; bottom:-4px; border-bottom:1px solid rgba(63,57,111,0.95); }
-      @keyframes headerIn { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
-      @keyframes contentIn { from{opacity:0} to{opacity:1} }
-      .header { animation:headerIn 0.4s ease forwards; }
-      .content { padding:120px 0 56px; animation:contentIn 0.5s ease 0.15s both; }
-      .product-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
-      .product-image { width:100%; aspect-ratio:1/1; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-      .product-image img { width:100%; height:100%; object-fit:contain; display:block; }
-      .product-info h1 { font-size:22px; font-weight:normal; margin:0 0 6px; }
-      .product-artist { font-size:12px; margin:0 0 16px; opacity:0.7; }
-      .product-divider { border:none; border-top:1px solid var(--border); margin:0 0 16px; }
-      .product-type-price { display:flex; justify-content:space-between; align-items:center; font-size:13px; margin-bottom:20px; }
-      .product-price { font-weight:700; }
-      .size-label { font-size:12px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px; }
-      .size-options { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 20px; }
-      .size-btn { padding:6px 14px; border:1px solid var(--border); background:transparent; font-family:"Space Mono","Courier New",monospace; font-size:12px; color:var(--ink); cursor:pointer; transition:all 0.15s ease; }
-      .size-btn:hover { border-color:var(--ink); }
-      .size-btn.selected { background:var(--ink); color:#fff; border-color:var(--ink); }
-      .product-details { list-style:disc; padding-left:18px; margin:0 0 8px; font-size:13px; line-height:1.7; }
-      .product-details li { margin-bottom:2px; }
-      .add-to-cart { width:100%; padding:14px; background:var(--ink); color:#fff; border:none; font-family:"Space Mono","Courier New",monospace; font-size:14px; cursor:pointer; margin-top:24px; transition:opacity 0.15s ease; }
-      .add-to-cart:hover { opacity:0.85; }
-      .back-link { display:inline-block; margin-top:14px; font-size:12px; opacity:0.65; transition:opacity 0.15s ease; }
-      .back-link:hover { opacity:1; }
-      .more-from { margin-top:80px; padding-top:32px; border-top:1px solid var(--border); }
-      .more-from-heading { font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:rgba(63,57,111,0.5); margin:0 0 20px; font-weight:normal; }
-      .more-from-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0 16px; }
-      .more-from-card { display:block; }
-      .more-from-card-image { aspect-ratio:3/4; background:#fff; overflow:hidden; }
-      .more-from-card-image img { width:100%; height:100%; object-fit:contain; }
-      .more-from-card p { margin:6px 0 2px; font-size:13px; }
-      .more-from-card .price { color:rgba(63,57,111,0.6); font-size:12px; }
-      @media(max-width:900px) {
-        .inner{padding:0 24px} .header .inner{flex-wrap:wrap;gap:14px;padding-top:14px;padding-bottom:14px}
-        .nav-right{margin-left:0} .nav-list{flex-wrap:wrap;gap:14px} .content{padding-top:64px}
-        .product-grid{grid-template-columns:1fr;gap:32px} .more-from-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-      }
-    </style>
+    <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
-    <div class="page">
-      <header class="header">
-        <div class="inner">
-          <a href="../index.html" class="logo-link"><img src="../assets/imp.png" alt="NovagangRecords" class="logo-img" /></a>
-          <nav class="nav" aria-label="Primary">
-            <ul class="nav-list">
-              <li><a href="../pages/releases.html">releases</a></li>
-              <li><a href="../pages/clothing.html" class="active">clothing</a></li>
-              <li><a href="../pages/physicals.html">physicals</a></li>
-              <li><a href="../pages/artists.html">artists</a></li>
-              <li><a href="#">mailing list</a></li>
-            </ul>
-          </nav>
-          <nav class="nav nav-right" aria-label="Account">
-            <ul class="nav-list">
-              <li><a href="../pages/tos.html">terms of service</a></li>
-              <li><a href="#">cart</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <main class="content">
-        <div class="inner">
-          <div class="product-grid">
-            <div class="product-image">
-              <img src="../assets/novagang-metal-tee.png" alt="Novagang Metal Tee" />
-            </div>
-            <div class="product-info">
-              <h1>Novagang Metal Tee</h1>
-              <p class="product-artist">NOVAGANG</p>
-              <hr class="product-divider" />
-              <div class="product-type-price">
-                <span>T-Shirt</span>
-                <span class="product-price">$35.00</span>
-              </div>
-              <div class="size-label">Select size</div>
-              <div class="size-options">
-                <button class="size-btn" data-size="XS">XS</button>
-                <button class="size-btn" data-size="S">S</button>
-                <button class="size-btn" data-size="M">M</button>
-                <button class="size-btn" data-size="L">L</button>
-                <button class="size-btn" data-size="XL">XL</button>
-                <button class="size-btn" data-size="XXL">XXL</button>
-              </div>
-              <ul class="product-details">
-                <li>Novagang Metal Tee.</li>
-                <li>100% Cotton, Screen-Print.</li>
-                <li>Made in USA</li>
-                <li>Delivers: Approximately 3 Weeks — April 10th–17th or earlier.</li>
-                <li>Printed on Lane Seven LS16005</li>
-                <li>Garment may appear different than pictured.</li>
-              </ul>
-              <button class="add-to-cart">Add to Cart</button>
-              <a href="../pages/clothing.html" class="back-link">← Back to Clothing</a>
-            </div>
+    <header class="site-header">
+      <div class="hdr-inner">
+        <a href="../index.html" class="site-logo">
+          <img src="../assets/imp.png" alt="NovagangRecords" />
+        </a>
+        <nav class="nav-primary">
+          <ul class="nav-list">
+            <li><a href="../pages/releases.html">releases</a></li>
+            <li><a href="../pages/clothing.html" class="active">clothing</a></li>
+            <li><a href="../pages/physicals.html">physicals</a></li>
+            <li><a href="../pages/artists.html">artists</a></li>
+            <li><a href="#">mailing list</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-secondary">
+          <ul class="nav-list">
+            <li><a href="../pages/tos.html">terms of service</a></li>
+            <li><a href="#">cart</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="pg">
+      <div class="pg-content">
+        <a href="../pages/clothing.html" class="back-link">← clothing</a>
+        <div class="product-layout">
+          <div class="product-img-wrap">
+            <img src="../assets/novagang-metal-tee.png" alt="Novagang Metal Tee" />
           </div>
-          <div class="more-from">
-            <p class="more-from-heading">More from NOVAGANG</p>
-            <div class="more-from-grid">
-              <a href="i-love-ng-shirt.html" class="more-from-card">
-                <div class="more-from-card-image"><img src="../assets/i-skull-ng.png" alt="I LOVE NG Tee" /></div>
-                <p>I LOVE NG Tee</p><p class="price">$45.00</p>
-              </a>
-              <a href="i-love-ng-white-tee.html" class="more-from-card">
-                <div class="more-from-card-image"><img src="../assets/novagang-tee.png" alt="I LOVE NG White Tee" /></div>
-                <p>I LOVE NG White Tee</p><p class="price">$40.00</p>
-              </a>
-              <a href="n9-polo-white.html" class="more-from-card">
-                <div class="more-from-card-image"><img src="../assets/novagang-polo-white.png" alt="N9 Polo — White" /></div>
-                <p>N9 Polo — White</p><p class="price">$100.00</p>
-              </a>
-              <a href="business-plushie.html" class="more-from-card">
-                <div class="more-from-card-image"><img src="../assets/novagang-business-plushie.png" alt="Business Plushie" /></div>
-                <p>Business Plushie</p><p class="price">$45.00</p>
-              </a>
+          <div class="product-info">
+            <div class="product-brand">NOVAGANG</div>
+            <div class="product-name">Novagang Metal Tee</div>
+            <div class="product-price">$35.00</div>
+            <ul class="product-desc">
+              <li>Novagang Metal Tee.</li>
+              <li>100% Cotton, Screen-Print.</li>
+              <li>Made in USA</li>
+              <li>Delivers: Approximately 3 Weeks — April 10th–17th or earlier.</li>
+              <li>Printed on Lane Seven LS16005</li>
+              <li>Garment may appear different than pictured.</li>
+            </ul>
+            <div class="size-label">Size</div>
+            <div class="size-options">
+              <button class="size-btn">XS</button>
+              <button class="size-btn">S</button>
+              <button class="size-btn">M</button>
+              <button class="size-btn">L</button>
+              <button class="size-btn">XL</button>
+              <button class="size-btn">XXL</button>
             </div>
+            <button class="add-to-cart">Add to Cart</button>
           </div>
         </div>
-      </main>
-    </div>
+
+        <div class="more-section">
+          <div class="more-label">More from NOVAGANG</div>
+          <div class="more-grid">
+            <div class="more-card">
+              <a href="i-love-ng-shirt.html">
+                <div class="more-card-img"><img src="../assets/i-skull-ng.png" alt="I LOVE NG Tee" /></div>
+                <div class="more-card-meta">
+                  <div class="more-card-name">I LOVE NG Tee</div>
+                  <div class="more-card-price">$45.00</div>
+                </div>
+              </a>
+            </div>
+            <div class="more-card">
+              <a href="i-love-ng-white-tee.html">
+                <div class="more-card-img"><img src="../assets/novagang-tee.png" alt="I LOVE NG White Tee" /></div>
+                <div class="more-card-meta">
+                  <div class="more-card-name">I LOVE NG White Tee</div>
+                  <div class="more-card-price">$40.00</div>
+                </div>
+              </a>
+            </div>
+            <div class="more-card">
+              <a href="n9-polo-white.html">
+                <div class="more-card-img"><img src="../assets/novagang-polo-white.png" alt="N9 Polo — White" /></div>
+                <div class="more-card-meta">
+                  <div class="more-card-name">N9 Polo — White</div>
+                  <div class="more-card-price">$100.00</div>
+                </div>
+              </a>
+            </div>
+            <div class="more-card">
+              <a href="business-plushie.html">
+                <div class="more-card-img"><img src="../assets/novagang-business-plushie.png" alt="Business Plushie" /></div>
+                <div class="more-card-meta">
+                  <div class="more-card-name">Business Plushie</div>
+                  <div class="more-card-price">$45.00</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <script>
-      (function(){document.querySelectorAll('.size-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('selected')});btn.classList.add('selected')})})})();
+    (function(){
+      var btns = document.querySelectorAll('.size-btn');
+      btns.forEach(function(b){
+        b.addEventListener('click', function(){
+          btns.forEach(function(x){ x.classList.remove('selected'); });
+          b.classList.add('selected');
+        });
+      });
+    })();
     </script>
   </body>
 </html>

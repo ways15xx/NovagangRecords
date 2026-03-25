@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,421 +8,86 @@
     <meta name="author" content="NovagangRecords" />
     <meta name="description" content="NovagangRecords releases" />
     <meta name="keywords" content="NovagangRecords, releases, NOVAGANG" />
-    <link
-      rel="stylesheet"
-      href="../releases_files/minimal-dark-styles-3364344753cbc319396e9d17916dcc1a.css"
-    />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
-    <style>
-      :root {
-        --ink: rgb(0, 0, 0);
-        --border: rgba(0, 0, 0, 0.22);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        margin: 0;
-        min-height: 100%;
-        background: #fff;
-      }
-
-      body {
-        background: #fff !important;
-        color: var(--ink) !important;
-        font-family: "Space Mono", "Courier New", monospace !important;
-        font-size: 14px;
-        line-height: 1.35;
-      }
-
-      body::after,
-      body::before {
-        display: none !important;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .page {
-        min-height: 100vh;
-      }
-
-      .inner {
-        max-width: 1480px;
-        margin: 0 auto;
-        padding: 0 32px;
-      }
-
-      .header {
-        background: #fff;
-        border-top: 1px solid rgba(0, 0, 0, 0.95);
-      }
-
-      .header .inner {
-        display: flex;
-        align-items: center;
-        gap: 26px;
-        min-height: 72px;
-      }
-
-      .logo-link {
-        flex: 0 0 auto;
-        display: inline-flex;
-        align-items: center;
-      }
-
-      .logo-img {
-        display: block;
-        width: auto;
-        height: 42px;
-      }
-
-      .nav {
-        flex: 0 1 auto;
-        min-width: 0;
-      }
-
-      .nav-right {
-        margin-left: auto;
-      }
-
-      .nav-list {
-        display: flex;
-        align-items: center;
-        gap: 22px;
-        white-space: nowrap;
-      }
-
-      .nav-list a {
-        display: inline-block;
-        line-height: 1;
-        color: var(--ink) !important;
-        background: transparent !important;
-        text-decoration: none !important;
-      }
-
-      .nav-list a:visited,
-      .nav-list a:hover,
-      .nav-list a:active,
-      .nav-list a:focus {
-        color: var(--ink) !important;
-        background: transparent !important;
-      }
-
-      .nav-list a.active {
-        position: relative;
-      }
-
-      .nav-list a.active::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 100%;
-        bottom: -4px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.95);
-      }
-
-      @keyframes headerIn {
-        from { opacity: 0; transform: translateY(-8px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes contentIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
-      }
-
-      .header {
-        animation: headerIn 0.4s ease forwards;
-      }
-
-      .content {
-        padding: 120px 0 56px;
-        animation: contentIn 0.5s ease 0.15s both;
-      }
-
-      .release-grid {
-        display: grid !important;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: 16px 14px;
-        align-items: start;
-        margin: 0;
-        padding: 0;
-      }
-
-      .release-grid::before,
-      .release-grid::after {
-        content: none !important;
-        display: none !important;
-      }
-
-      .release-card {
-        display: block !important;
-        float: none !important;
-        clear: none !important;
-        width: auto !important;
-        margin: 0 !important;
-        min-width: 0;
-        padding-bottom: 16px;
-        border-bottom: 1px solid var(--border);
-        background: transparent !important;
-        opacity: 0;
-        transform: translateY(18px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-      }
-
-      .release-card.in-view {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .release-card:hover,
-      .release-card:active,
-      .release-card:focus {
-        background: transparent !important;
-        color: var(--ink) !important;
-      }
-
-      .release-card:hover {
-        transform: translateY(-3px) !important;
-      }
-
-      .release-card-image {
-        aspect-ratio: 1 / 1;
-        overflow: hidden;
-        background: #fff;
-      }
-
-      .release-card-image img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.4s ease;
-      }
-
-      .release-card:hover .release-card-image img {
-        transform: scale(1.05);
-      }
-
-      .release-card-meta {
-        margin-top: 8px;
-      }
-
-      .release-card-meta p {
-        margin: 0;
-      }
-
-      .release-card-title {
-        color: var(--ink);
-        white-space: nowrap;
-        overflow: hidden;
-      }
-
-      .release-card:hover .release-card-meta,
-      .release-card:hover .release-card-meta p {
-        opacity: 1 !important;
-        color: var(--ink) !important;
-      }
-
-      .release-card-empty .release-card-image {
-        border: 1px solid rgba(0, 0, 0, 0.16);
-      }
-
-      .release-card-empty .release-card-image::after {
-        content: "cover";
-        display: flex;
-        width: 100%;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-        color: rgba(0, 0, 0, 0.4);
-        text-transform: lowercase;
-      }
-@media (max-width: 1200px) {
-        .release-grid {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 900px) {
-        .inner {
-          padding: 0 24px;
-        }
-
-        .header .inner {
-          flex-wrap: wrap;
-          gap: 14px;
-          padding-top: 14px;
-          padding-bottom: 14px;
-        }
-
-        .nav-right {
-          margin-left: 0;
-        }
-
-        .nav-list {
-          flex-wrap: wrap;
-          gap: 14px;
-        }
-
-        .nav-list a.active::after {
-          width: 100%;
-          bottom: -4px;
-        }
-
-        .content {
-          padding-top: 64px;
-        }
-
-        .release-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 22px 14px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
-    <div class="page">
-      <header class="header">
-        <div class="inner">
-          <a href="../index.html" class="logo-link" aria-label="NovagangRecords home">
-            <img src="../assets/imp.png" alt="NovagangRecords" class="logo-img" />
-          </a>
+    <header class="site-header">
+      <div class="hdr-inner">
+        <a href="../index.html" class="site-logo">
+          <img src="../assets/imp.png" alt="NovagangRecords" />
+        </a>
+        <nav class="nav-primary">
+          <ul class="nav-list">
+            <li><a href="releases.html" class="active">releases</a></li>
+            <li><a href="clothing.html">clothing</a></li>
+            <li><a href="physicals.html">physicals</a></li>
+            <li><a href="artists.html">artists</a></li>
+            <li><a href="#">mailing list</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-secondary">
+          <ul class="nav-list">
+            <li><a href="tos.html">terms of service</a></li>
+            <li><a href="#">cart</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-          <nav class="nav" aria-label="Primary">
-            <ul class="nav-list">
-              <li><a href="releases.html" class="active">releases</a></li>
-              <li><a href="clothing.html">clothing</a></li>
-              <li><a href="physicals.html">physicals</a></li>
-              <li><a href="artists.html">artists</a></li>
-              <li><a href="#">mailing list</a></li>
-            </ul>
-          </nav>
+    <main class="pg">
+      <div class="pg-content">
+        <span class="section-label">Releases</span>
+        <div class="release-grid">
 
-          <nav class="nav nav-right" aria-label="Account">
-            <ul class="nav-list">
-              <li><a href="tos.html">terms of service</a></li>
-              <li><a href="#">cart</a></li>
-            </ul>
-          </nav>
+          <div class="r-card">
+            <a href="../albums/exit-2b.html">
+              <div class="r-img"><img src="../assets/exit2b.jpeg" alt="EXIT 2B" /></div>
+              <div class="r-meta">
+                <div class="r-title">EXIT 2B</div>
+                <div class="r-artist">B0YG1RL</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="r-card">
+            <a href="../albums/after-all-that.html">
+              <div class="r-img"><img src="../assets/AfterAllThatImStillHere..jpg" alt="After All That, Im Still Here." /></div>
+              <div class="r-meta">
+                <div class="r-title">After All That, Im Still Here.</div>
+                <div class="r-artist">Zephrxd</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="r-card">
+            <a href="../albums/i-am-the-temper.html">
+              <div class="r-img"><img src="../assets/IAmTheTemper.jpg" alt="I AM THE TEMPER" /></div>
+              <div class="r-meta">
+                <div class="r-title">I AM THE TEMPER</div>
+                <div class="r-artist">prblm</div>
+              </div>
+            </a>
+          </div>
+
         </div>
-      </header>
+      </div>
+    </main>
 
-      <main class="content">
-        <div class="inner">
-          <section class="release-grid" aria-label="Releases">
-            <a href="../albums/exit-2b.html" class="release-card">
-              <div class="release-card-image">
-                <img
-                  class="no-resize"
-                  src="../assets/exit2b.jpeg"
-                  alt="EXIT 2B"
-                />
-              </div>
-              <div class="release-card-meta">
-                <p class="release-card-title">EXIT 2B</p>
-                <p>B0YG1RL</p>
-              </div>
-            </a>
-
-            <a href="../albums/after-all-that.html" class="release-card">
-              <div class="release-card-image">
-                <img
-                  class="no-resize"
-                  src="../assets/AfterAllThatImStillHere..jpg"
-                  alt="After All That, Im Still Here."
-                />
-              </div>
-              <div class="release-card-meta">
-                <p class="release-card-title">After All That, Im Still Here.</p>
-                <p>Zephrxd</p>
-              </div>
-            </a>
-
-            <a href="../albums/i-am-the-temper.html" class="release-card">
-              <div class="release-card-image">
-                <img
-                  class="no-resize"
-                  src="../assets/IAmTheTemper.jpg"
-                  alt="I AM THE TEMPER"
-                />
-              </div>
-              <div class="release-card-meta">
-                <p class="release-card-title">I AM THE TEMPER</p>
-                <p>prblm</p>
-              </div>
-            </a>
-
-            <!-- To add a new release, copy this block:
-            <a href="#" class="release-card">
-              <div class="release-card-image">
-                <img class="no-resize" src="assets/FILENAME.jpg" alt="TITLE" />
-              </div>
-              <div class="release-card-meta">
-                <p class="release-card-title">TITLE</p>
-                <p>ARTIST</p>
-              </div>
-            </a>
-            -->
-          </section>
-        </div>
-      </main>
-    </div>
-    <script src="../js/script.js"></script>
     <script>
-      (function () {
-        var observer = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry, i) {
-            if (entry.isIntersecting) {
-              var el = entry.target;
-              var delay = (Array.from(el.parentNode.children).indexOf(el) % 6) * 60;
-              setTimeout(function () { el.classList.add('in-view'); }, delay);
-              observer.unobserve(el);
-            }
-          });
-        }, { threshold: 0.08 });
-        document.querySelectorAll('.release-card').forEach(function (card) {
-          observer.observe(card);
-        });
-      })();
-
-      (function () {
-        function fixTitles() {
-          document.querySelectorAll('.release-card-title').forEach(function (el) {
-            var full = el.getAttribute('data-full') || el.textContent.trim();
-            el.setAttribute('data-full', full);
-            el.textContent = full;
-            if (el.scrollWidth <= el.clientWidth) return;
-            var lo = 0, hi = full.length;
-            while (hi - lo > 1) {
-              var mid = (lo + hi) >> 1;
-              el.textContent = full.slice(0, mid).trimEnd() + '...';
-              if (el.scrollWidth <= el.clientWidth) lo = mid;
-              else hi = mid;
-            }
-            el.textContent = full.slice(0, lo).trimEnd() + '...';
-          });
-        }
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', fixTitles);
-        } else {
-          fixTitles();
-        }
-        window.addEventListener('resize', fixTitles);
-      })();
+(function(){
+  var cards = document.querySelectorAll('.r-card');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var i = Array.from(cards).indexOf(e.target);
+        setTimeout(function(){ e.target.classList.add('in'); }, (i % 6) * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.05});
+  cards.forEach(function(c){ io.observe(c); });
+})();
     </script>
   </body>
 </html>
-

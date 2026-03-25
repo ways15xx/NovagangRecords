@@ -1,242 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NovagangRecords</title>
-    <link rel="stylesheet" href="./index_files/cb6db52acf2a7b2e.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
-    <style>
-      :root {
-        --ink: rgb(0, 0, 0);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovagangRecords</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="index-body">
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        margin: 0;
-        min-height: 100%;
-        background: #ffffff;
-      }
-
-      body {
-        color: var(--ink);
-        font-family: "Space Mono", "Courier New", monospace;
-        font-size: 14px;
-        line-height: 1.35;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      #container {
-        min-height: 100vh;
-        color: var(--ink);
-      }
-
-      #home {
-        min-height: 100vh;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-      }
-
-      .home-stack {
-        margin-top: 28vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .home-logo {
-        display: block;
-        width: 180px;
-        height: auto;
-        margin-bottom: 10px;
-        cursor: grab;
-        user-select: none;
-        -webkit-user-drag: none;
-      }
-
-      .home-logo.dragging {
-        cursor: grabbing;
-      }
-
-      .home-stack p {
-        margin: 0;
-      }
-
-      .home-stack a {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        gap: 0px;
-        transition: gap 0.25s ease, color 0.25s ease;
-      }
-
-      .home-stack a::before {
-        content: "—";
-        display: inline-block;
-        opacity: 0;
-        transform: translateX(-8px);
-        transition: opacity 0.25s ease, transform 0.25s ease;
-        font-size: 12px;
-        color: var(--ink);
-      }
-
-      .home-stack a:hover::before {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      .home-stack a:hover {
-        gap: 8px;
-      }
-
-      .home-stack a p {
-        transition: transform 0.25s ease;
-      }
-
-      .home-stack a:hover p {
-        transform: translateX(4px);
-      }
-
-      @media (max-width: 900px) {
-        .home-stack {
-          margin-left: 24px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="container">
-      <div id="home">
-        <div class="home-stack">
-          <img class="home-logo" src="assets/novagang-records2026.png" alt="NovagangRecords" />
-          <a href="pages/releases.html"><p>releases</p></a>
-          <a href="pages/clothing.html"><p>clothing</p></a>
-          <a href="pages/physicals.html"><p>physicals</p></a>
-          <a href="#"><p>mailing list</p></a>
-          <a href="pages/tos.html"><p>terms of service</p></a>
-        </div>
-      </div>
+  <header class="index-header">
+    <div class="index-hdr-inner">
+      <nav class="index-nav">
+        <ul>
+          <li><a href="pages/releases.html">releases</a></li>
+          <li><a href="pages/clothing.html">clothing</a></li>
+          <li><a href="pages/physicals.html">physicals</a></li>
+          <li><a href="pages/artists.html">artists</a></li>
+          <li><a href="#">mailing list</a></li>
+          <li><a href="pages/tos.html">terms of service</a></li>
+        </ul>
+      </nav>
     </div>
-    <script src="js/script.js"></script>
-    <script>
-      (function () {
-        var logo = document.querySelector('.home-logo');
+  </header>
 
-        // Pull logo out of flow and position it fixed
-        var rect = logo.getBoundingClientRect();
-        var x = rect.left;
-        var y = rect.top;
-        var w = rect.width;
+  <div class="index-canvas" id="canvas">
+    <img class="home-logo" src="assets/novagang-records2026.png" alt="NovagangRecords" />
+    <div class="home-logo-spacer"></div>
+  </div>
 
-        // Insert spacer so links don't jump when logo leaves the flow
-        var spacer = document.createElement('div');
-        spacer.style.width  = rect.width  + 'px';
-        spacer.style.height = rect.height + 'px';
-        spacer.style.marginBottom = '10px';
-        logo.parentNode.insertBefore(spacer, logo);
+  <script>
+    (function () {
+      var logo = document.querySelector('.home-logo');
 
-        logo.style.position = 'fixed';
+      // Pull logo out of flow and position it fixed
+      var rect = logo.getBoundingClientRect();
+      var x = rect.left;
+      var y = rect.top;
+      var w = rect.width;
+
+      // Insert spacer so links don't jump when logo leaves the flow
+      var spacer = document.createElement('div');
+      spacer.style.width  = rect.width  + 'px';
+      spacer.style.height = rect.height + 'px';
+      spacer.style.marginBottom = '10px';
+      logo.parentNode.insertBefore(spacer, logo);
+
+      logo.style.position = 'fixed';
+      logo.style.left = x + 'px';
+      logo.style.top  = y + 'px';
+      logo.style.width = w + 'px';
+      logo.style.margin = '0';
+      logo.style.zIndex = '999';
+      logo.style.willChange = 'transform';
+
+      var vx = 0, vy = 0;
+      var isDragging = false;
+      var lastX, lastY, lastT;
+      var raf;
+
+      // Physics constants — floaty feel
+      var DAMPING  = 0.999;  // barely any slowdown — keeps drifting
+      var GRAVITY  = 0;      // no gravity
+      var BOUNCE   = 0.8;    // energy kept on wall bounce
+
+      logo.addEventListener('mousedown', onDown);
+      logo.addEventListener('touchstart', onDown, { passive: false });
+
+      function onDown(e) {
+        e.preventDefault();
+        isDragging = true;
+        cancelAnimationFrame(raf);
+        vx = 0; vy = 0;
+        var pt = pointer(e);
+        lastX = pt.x; lastY = pt.y; lastT = Date.now();
+        logo.classList.add('dragging');
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('touchmove', onMove, { passive: false });
+        document.addEventListener('mouseup', onUp);
+        document.addEventListener('touchend', onUp);
+      }
+
+      function onMove(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        var pt = pointer(e);
+        var now = Date.now();
+        var dt  = Math.max(now - lastT, 1);
+        // Track velocity (px per frame at 60fps)
+        vx = (pt.x - lastX) / dt * 5;
+        vy = (pt.y - lastY) / dt * 5;
+        x += pt.x - lastX;
+        y += pt.y - lastY;
+        lastX = pt.x; lastY = pt.y; lastT = now;
+        setPos();
+      }
+
+      function onUp() {
+        isDragging = false;
+        logo.classList.remove('dragging');
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('touchmove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        document.removeEventListener('touchend', onUp);
+        physics();
+      }
+
+      function physics() {
+        vy += GRAVITY;
+        vx *= DAMPING;
+        vy *= DAMPING;
+        x  += vx;
+        y  += vy;
+
+        var lw = logo.offsetWidth;
+        var lh = logo.offsetHeight;
+        var maxX = window.innerWidth  - lw;
+        var maxY = window.innerHeight - lh;
+
+        if (x < 0)    { x = 0;    vx =  Math.abs(vx) * BOUNCE; }
+        if (x > maxX) { x = maxX; vx = -Math.abs(vx) * BOUNCE; }
+        if (y < 0)    { y = 0;    vy =  Math.abs(vy) * BOUNCE; }
+        if (y > maxY) { y = maxY; vy = -Math.abs(vy) * BOUNCE; }
+
+        setPos();
+
+        raf = requestAnimationFrame(physics);
+      }
+
+      function setPos() {
         logo.style.left = x + 'px';
         logo.style.top  = y + 'px';
-        logo.style.width = w + 'px';
-        logo.style.margin = '0';
-        logo.style.zIndex = '999';
-        logo.style.willChange = 'transform';
+      }
 
-        var vx = 0, vy = 0;
-        var isDragging = false;
-        var lastX, lastY, lastT;
-        var raf;
-
-        // Physics constants — floaty feel
-        var DAMPING  = 0.999;  // barely any slowdown — keeps drifting
-        var GRAVITY  = 0;      // no gravity
-        var BOUNCE   = 0.8;    // energy kept on wall bounce
-
-        logo.addEventListener('mousedown', onDown);
-        logo.addEventListener('touchstart', onDown, { passive: false });
-
-        function onDown(e) {
-          e.preventDefault();
-          isDragging = true;
-          cancelAnimationFrame(raf);
-          vx = 0; vy = 0;
-          var pt = pointer(e);
-          lastX = pt.x; lastY = pt.y; lastT = Date.now();
-          logo.classList.add('dragging');
-          document.addEventListener('mousemove', onMove);
-          document.addEventListener('touchmove', onMove, { passive: false });
-          document.addEventListener('mouseup', onUp);
-          document.addEventListener('touchend', onUp);
-        }
-
-        function onMove(e) {
-          if (!isDragging) return;
-          e.preventDefault();
-          var pt = pointer(e);
-          var now = Date.now();
-          var dt  = Math.max(now - lastT, 1);
-          // Track velocity (px per frame at 60fps)
-          vx = (pt.x - lastX) / dt * 5;
-          vy = (pt.y - lastY) / dt * 5;
-          x += pt.x - lastX;
-          y += pt.y - lastY;
-          lastX = pt.x; lastY = pt.y; lastT = now;
-          setPos();
-        }
-
-        function onUp() {
-          isDragging = false;
-          logo.classList.remove('dragging');
-          document.removeEventListener('mousemove', onMove);
-          document.removeEventListener('touchmove', onMove);
-          document.removeEventListener('mouseup', onUp);
-          document.removeEventListener('touchend', onUp);
-          physics();
-        }
-
-        function physics() {
-          vy += GRAVITY;
-          vx *= DAMPING;
-          vy *= DAMPING;
-          x  += vx;
-          y  += vy;
-
-          var lw = logo.offsetWidth;
-          var lh = logo.offsetHeight;
-          var maxX = window.innerWidth  - lw;
-          var maxY = window.innerHeight - lh;
-
-          if (x < 0)    { x = 0;    vx =  Math.abs(vx) * BOUNCE; }
-          if (x > maxX) { x = maxX; vx = -Math.abs(vx) * BOUNCE; }
-          if (y < 0)    { y = 0;    vy =  Math.abs(vy) * BOUNCE; }
-          if (y > maxY) { y = maxY; vy = -Math.abs(vy) * BOUNCE; }
-
-          setPos();
-
-          raf = requestAnimationFrame(physics);
-        }
-
-        function setPos() {
-          logo.style.left = x + 'px';
-          logo.style.top  = y + 'px';
-        }
-
-        function pointer(e) {
-          return e.touches ? { x: e.touches[0].clientX, y: e.touches[0].clientY }
-                           : { x: e.clientX,             y: e.clientY };
-        }
-      })();
-    </script>
-  </body>
+      function pointer(e) {
+        return e.touches ? { x: e.touches[0].clientX, y: e.touches[0].clientY }
+                         : { x: e.clientX,             y: e.clientY };
+      }
+    })();
+  </script>
+</body>
 </html>

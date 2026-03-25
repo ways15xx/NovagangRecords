@@ -6,561 +6,272 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Artists - NovagangRecords</title>
     <meta name="author" content="NovagangRecords" />
-    <link rel="stylesheet" href="../releases_files/minimal-dark-styles-3364344753cbc319396e9d17916dcc1a.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
-    <style>
-      :root {
-        --ink: rgb(0, 0, 0);
-        --border: rgba(0, 0, 0, 0.18);
-      }
-
-      * { box-sizing: border-box; }
-
-      html, body {
-        margin: 0;
-        min-height: 100%;
-        background: #fff;
-      }
-
-      body {
-        background: #fff !important;
-        color: var(--ink) !important;
-        font-family: "Space Mono", "Courier New", monospace !important;
-        font-size: 14px;
-        line-height: 1.35;
-      }
-
-      body::after,
-      body::before {
-        display: none !important;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .page {
-        min-height: 100vh;
-      }
-
-      .inner {
-        max-width: 1480px;
-        margin: 0 auto;
-        padding: 0 32px;
-      }
-
-      .header {
-        background: #fff;
-        border-top: 1px solid rgba(0, 0, 0, 0.95);
-      }
-
-      .header .inner {
-        display: flex;
-        align-items: center;
-        gap: 26px;
-        min-height: 72px;
-      }
-
-      .logo-link {
-        flex: 0 0 auto;
-        display: inline-flex;
-        align-items: center;
-      }
-
-      .logo-img {
-        display: block;
-        width: auto;
-        height: 42px;
-      }
-
-      .nav {
-        flex: 0 1 auto;
-        min-width: 0;
-      }
-
-      .nav-right {
-        margin-left: auto;
-      }
-
-      .nav-list {
-        display: flex;
-        align-items: center;
-        gap: 22px;
-        white-space: nowrap;
-      }
-
-      .nav-list a {
-        display: inline-block;
-        line-height: 1;
-        color: var(--ink) !important;
-        background: transparent !important;
-        text-decoration: none !important;
-      }
-
-      .nav-list a:visited,
-      .nav-list a:hover,
-      .nav-list a:active,
-      .nav-list a:focus {
-        color: var(--ink) !important;
-        background: transparent !important;
-      }
-
-      .nav-list a.active {
-        position: relative;
-      }
-
-      .nav-list a.active::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 100%;
-        bottom: -4px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.95);
-      }
-
-      @keyframes headerIn {
-        from { opacity: 0; transform: translateY(-8px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes contentIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
-      }
-
-      .header {
-        animation: headerIn 0.4s ease forwards;
-      }
-
-      .content {
-        padding: 80px 0;
-        animation: contentIn 0.5s ease 0.15s both;
-      }
-
-      .page-heading {
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: rgba(0, 0, 0, 0.45);
-        font-weight: normal;
-        margin: 0 0 40px;
-      }
-
-      .artists-grid-wrap {
-        border-top: 1px solid var(--border);
-        border-left: 1px solid var(--border);
-      }
-
-      .artists-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0;
-      }
-
-      .artist-card {
-        border-right: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-        padding: 32px 28px;
-        opacity: 0;
-        transform: translateY(14px);
-        transition: background 0.2s ease, opacity 0.4s ease, transform 0.4s ease;
-      }
-
-      .artist-card:nth-child(3n) {
-        border-right: none;
-      }
-
-      .artist-card.revealed {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .artist-card:hover {
-        background: rgba(0, 0, 0, 0.025);
-      }
-
-      .artist-card-cover,
-      .artist-card-placeholder {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        margin-bottom: 18px;
-        overflow: hidden;
-        background: #f5f5f5;
-      }
-
-      .artist-card-cover img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.45s ease;
-      }
-
-      .artist-card:hover .artist-card-cover img {
-        transform: scale(1.03);
-      }
-
-      .artist-card-placeholder {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .artist-card-placeholder span {
-        font-size: 48px;
-        font-weight: 700;
-        color: rgba(0, 0, 0, 0.12);
-        letter-spacing: -0.02em;
-        text-transform: uppercase;
-      }
-
-      .artist-card-name {
-        margin: 0 0 4px;
-        font-size: 16px;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-        color: var(--ink);
-      }
-
-      .artist-card-year {
-        margin: 0;
-        font-size: 11px;
-        color: rgba(0, 0, 0, 0.45);
-      }
-
-      .artist-card-socials {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 12px;
-      }
-
-      .artist-card-social {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 16px;
-        height: 16px;
-        color: var(--ink);
-      }
-
-      .artist-card-social svg {
-        width: 14px;
-        height: 14px;
-        display: block;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 1.8;
-      }
-
-      .artist-card-social.apple svg,
-      .artist-card-social.spotify svg,
-      .artist-card-social.soundcloud svg {
-        stroke-width: 1.6;
-      }
-
-      @media (max-width: 900px) {
-        .inner {
-          padding: 0 24px;
-        }
-
-        .header .inner {
-          flex-wrap: wrap;
-          gap: 14px;
-          padding-top: 14px;
-          padding-bottom: 14px;
-        }
-
-        .nav-right {
-          margin-left: 0;
-        }
-
-        .nav-list {
-          flex-wrap: wrap;
-          gap: 14px;
-        }
-
-        .content {
-          padding-top: 48px;
-        }
-
-        .artists-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .artist-card:nth-child(3n) {
-          border-right: 1px solid var(--border);
-        }
-
-        .artist-card:nth-child(2n) {
-          border-right: none;
-        }
-      }
-
-      @media (max-width: 560px) {
-        .artists-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .artist-card {
-          border-right: none !important;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
-    <div class="page">
-      <header class="header">
-        <div class="inner">
-          <a href="../index.html" class="logo-link" aria-label="NovagangRecords home">
-            <img src="../assets/imp.png" alt="NovagangRecords" class="logo-img" />
-          </a>
+    <header class="site-header">
+      <div class="hdr-inner">
+        <a href="../index.html" class="site-logo">
+          <img src="../assets/imp.png" alt="NovagangRecords" />
+        </a>
+        <nav class="nav-primary">
+          <ul class="nav-list">
+            <li><a href="releases.html">releases</a></li>
+            <li><a href="clothing.html">clothing</a></li>
+            <li><a href="physicals.html">physicals</a></li>
+            <li><a href="artists.html" class="active">artists</a></li>
+            <li><a href="#">mailing list</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-secondary">
+          <ul class="nav-list">
+            <li><a href="tos.html">terms of service</a></li>
+            <li><a href="#">cart</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-          <nav class="nav" aria-label="Primary">
-            <ul class="nav-list">
-              <li><a href="releases.html">releases</a></li>
-              <li><a href="clothing.html">clothing</a></li>
-              <li><a href="physicals.html">physicals</a></li>
-              <li><a href="artists.html" class="active">artists</a></li>
-              <li><a href="#">mailing list</a></li>
-            </ul>
-          </nav>
+    <main class="pg">
+      <div class="pg-content">
+        <span class="section-label">Artists</span>
+        <div class="artists-grid">
 
-          <nav class="nav nav-right" aria-label="Account">
-            <ul class="nav-list">
-              <li><a href="tos.html">terms of service</a></li>
-              <li><a href="#">cart</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
-      <main class="content">
-        <div class="inner">
-          <p class="page-heading">Artists</p>
-
-          <div class="artists-grid-wrap">
-            <div class="artists-grid">
-              <article class="artist-card">
-                <div class="artist-card-placeholder"><span>An</span></div>
-                <p class="artist-card-name">angelus</p>
-                <p class="artist-card-year">2020, 2026 - current</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="angelus Instagram">
-                    <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg>
-                  </a>
-                  <a href="#" class="artist-card-social" aria-label="angelus X">
-                    <svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg>
-                  </a>
-                  <a href="#" class="artist-card-social spotify" aria-label="angelus Spotify">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg>
-                  </a>
-                  <a href="#" class="artist-card-social apple" aria-label="angelus Apple Music">
-                    <svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg>
-                  </a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="angelus SoundCloud">
-                    <svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg>
-                  </a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-cover">
-                  <img src="../assets/artists/b0yg1rl.jpeg" alt="B0YG1RL" />
-                </div>
-                <p class="artist-card-name">B0YG1RL</p>
-                <p class="artist-card-year">TBA</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="B0YG1RL Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="B0YG1RL X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="B0YG1RL Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="B0YG1RL Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="B0YG1RL SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-placeholder"><span>Ex</span></div>
-                <p class="artist-card-name">Exodus1900</p>
-                <p class="artist-card-year">2021 - current</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="Exodus1900 Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="Exodus1900 X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="Exodus1900 Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="Exodus1900 Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="Exodus1900 SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-cover">
-                  <img src="../assets/artists/gv1nn.jpg" alt="gv1nn" />
-                </div>
-                <p class="artist-card-name">gv1nn</p>
-                <p class="artist-card-year">2019 - current</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="gv1nn Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="gv1nn X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="gv1nn Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="gv1nn Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="gv1nn SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-placeholder"><span>kg</span></div>
-                <p class="artist-card-name">kasper gem</p>
-                <p class="artist-card-year">2020 - current</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="kasper gem Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="kasper gem X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="kasper gem Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="kasper gem Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="kasper gem SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-placeholder"><span>KN</span></div>
-                <p class="artist-card-name">KAY NIVE$</p>
-                <p class="artist-card-year">2021 - current</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="KAY NIVE$ Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="KAY NIVE$ X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="KAY NIVE$ Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="KAY NIVE$ Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="KAY NIVE$ SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-placeholder"><span>kf</span></div>
-                <p class="artist-card-name">kingfelix</p>
-                <p class="artist-card-year">TBA</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="kingfelix Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="kingfelix X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="kingfelix Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="kingfelix Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="kingfelix SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-cover">
-                  <img src="../assets/IAmTheTemper.jpg" alt="prblm" />
-                </div>
-                <p class="artist-card-name">prblm</p>
-                <p class="artist-card-year">2018 - current</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="prblm Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="prblm X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="prblm Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="prblm Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="prblm SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-placeholder"><span>qu</span></div>
-                <p class="artist-card-name">quinn</p>
-                <p class="artist-card-year">2019 - 2020, 2023 - current</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="quinn Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="quinn X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="quinn Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="quinn Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="quinn SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-placeholder"><span>Tr</span></div>
-                <p class="artist-card-name">Trauma</p>
-                <p class="artist-card-year">TBA</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="Trauma Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="Trauma X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="Trauma Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="Trauma Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="Trauma SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-placeholder"><span>Wa</span></div>
-                <p class="artist-card-name">Ways</p>
-                <p class="artist-card-year">2019 - current</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="Ways Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="Ways X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="Ways Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="Ways Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="Ways SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-cover">
-                  <img src="../assets/AfterAllThatImStillHere..jpg" alt="Zephrxd" />
-                </div>
-                <p class="artist-card-name">Zephrxd</p>
-                <p class="artist-card-year">TBA</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="Zephrxd Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="Zephrxd X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="Zephrxd Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="Zephrxd Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="Zephrxd SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
-
-              <article class="artist-card">
-                <div class="artist-card-placeholder"><span>Zo</span></div>
-                <p class="artist-card-name">Zootzie</p>
-                <p class="artist-card-year">2019 - 2020, 2023 - current</p>
-                <div class="artist-card-socials">
-                  <a href="#" class="artist-card-social" aria-label="Zootzie Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
-                  <a href="#" class="artist-card-social" aria-label="Zootzie X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
-                  <a href="#" class="artist-card-social spotify" aria-label="Zootzie Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
-                  <a href="#" class="artist-card-social apple" aria-label="Zootzie Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
-                  <a href="#" class="artist-card-social soundcloud" aria-label="Zootzie SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
-                </div>
-              </article>
+          <article class="ar-card">
+            <div class="ar-placeholder"><span>An</span></div>
+            <div class="ar-meta">
+              <p class="ar-name">angelus</p>
+              <p class="ar-sub">2020, 2026 - current</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="angelus Instagram">
+                  <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg>
+                </a>
+                <a href="#" class="artist-card-social" aria-label="angelus X">
+                  <svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+                </a>
+                <a href="#" class="artist-card-social spotify" aria-label="angelus Spotify">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg>
+                </a>
+                <a href="#" class="artist-card-social apple" aria-label="angelus Apple Music">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg>
+                </a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="angelus SoundCloud">
+                  <svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg>
+                </a>
+              </div>
             </div>
-          </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-img">
+              <img src="../assets/artists/b0yg1rl.jpeg" alt="B0YG1RL" />
+            </div>
+            <div class="ar-meta">
+              <p class="ar-name">B0YG1RL</p>
+              <p class="ar-sub">TBA</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="B0YG1RL Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="B0YG1RL X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="B0YG1RL Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="B0YG1RL Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="B0YG1RL SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-placeholder"><span>Ex</span></div>
+            <div class="ar-meta">
+              <p class="ar-name">Exodus1900</p>
+              <p class="ar-sub">2021 - current</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="Exodus1900 Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="Exodus1900 X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="Exodus1900 Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="Exodus1900 Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="Exodus1900 SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-img">
+              <img src="../assets/artists/gv1nn.jpg" alt="gv1nn" />
+            </div>
+            <div class="ar-meta">
+              <p class="ar-name">gv1nn</p>
+              <p class="ar-sub">2019 - current</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="gv1nn Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="gv1nn X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="gv1nn Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="gv1nn Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="gv1nn SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-placeholder"><span>kg</span></div>
+            <div class="ar-meta">
+              <p class="ar-name">kasper gem</p>
+              <p class="ar-sub">2020 - current</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="kasper gem Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="kasper gem X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="kasper gem Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="kasper gem Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="kasper gem SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-placeholder"><span>KN</span></div>
+            <div class="ar-meta">
+              <p class="ar-name">KAY NIVE$</p>
+              <p class="ar-sub">2021 - current</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="KAY NIVE$ Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="KAY NIVE$ X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="KAY NIVE$ Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="KAY NIVE$ Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="KAY NIVE$ SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-placeholder"><span>kf</span></div>
+            <div class="ar-meta">
+              <p class="ar-name">kingfelix</p>
+              <p class="ar-sub">TBA</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="kingfelix Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="kingfelix X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="kingfelix Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="kingfelix Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="kingfelix SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-img">
+              <img src="../assets/IAmTheTemper.jpg" alt="prblm" />
+            </div>
+            <div class="ar-meta">
+              <p class="ar-name">prblm</p>
+              <p class="ar-sub">2018 - current</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="prblm Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="prblm X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="prblm Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="prblm Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="prblm SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-placeholder"><span>qu</span></div>
+            <div class="ar-meta">
+              <p class="ar-name">quinn</p>
+              <p class="ar-sub">2019 - 2020, 2023 - current</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="quinn Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="quinn X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="quinn Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="quinn Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="quinn SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-placeholder"><span>Tr</span></div>
+            <div class="ar-meta">
+              <p class="ar-name">Trauma</p>
+              <p class="ar-sub">TBA</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="Trauma Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="Trauma X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="Trauma Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="Trauma Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="Trauma SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-placeholder"><span>Wa</span></div>
+            <div class="ar-meta">
+              <p class="ar-name">Ways</p>
+              <p class="ar-sub">2019 - current</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="Ways Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="Ways X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="Ways Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="Ways Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="Ways SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-img">
+              <img src="../assets/AfterAllThatImStillHere..jpg" alt="Zephrxd" />
+            </div>
+            <div class="ar-meta">
+              <p class="ar-name">Zephrxd</p>
+              <p class="ar-sub">TBA</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="Zephrxd Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="Zephrxd X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="Zephrxd Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="Zephrxd Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="Zephrxd SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ar-card">
+            <div class="ar-placeholder"><span>Zo</span></div>
+            <div class="ar-meta">
+              <p class="ar-name">Zootzie</p>
+              <p class="ar-sub">2019 - 2020, 2023 - current</p>
+              <div class="ar-tag">
+                <a href="#" class="artist-card-social" aria-label="Zootzie Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="#" class="artist-card-social" aria-label="Zootzie X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"></path></svg></a>
+                <a href="#" class="artist-card-social spotify" aria-label="Zootzie Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"></path><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"></path><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"></path></svg></a>
+                <a href="#" class="artist-card-social apple" aria-label="Zootzie Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"></path></svg></a>
+                <a href="#" class="artist-card-social soundcloud" aria-label="Zootzie SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"></path></svg></a>
+              </div>
+            </div>
+          </article>
+
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
 
     <script>
-      (function () {
-        var cards = document.querySelectorAll('.artist-card');
-
-        var observer = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              var el = entry.target;
-              var index = Array.from(cards).indexOf(el);
-              setTimeout(function () {
-                el.classList.add('revealed');
-              }, (index % 3) * 80);
-              observer.unobserve(el);
-            }
-          });
-        }, { threshold: 0.08 });
-
-        cards.forEach(function (card) {
-          observer.observe(card);
-        });
-      })();
+(function(){
+  var cards = document.querySelectorAll('.ar-card');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var el = entry.target;
+        var index = Array.from(cards).indexOf(el);
+        setTimeout(function(){
+          el.classList.add('in');
+        }, (index % 3) * 80);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.08 });
+  cards.forEach(function(card){ observer.observe(card); });
+})();
     </script>
   </body>
 </html>
