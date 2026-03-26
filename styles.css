@@ -573,15 +573,20 @@ body {
    FOOTER
 ═══════════════════ */
 .site-footer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 32px 0 24px;
+  font-size: 11px;
+  color: var(--dim);
+}
+
+.site-footer.fixed {
   position: fixed;
   bottom: 16px;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 11px;
-  color: var(--dim);
+  padding: 0;
   pointer-events: none;
   z-index: 100;
 }
