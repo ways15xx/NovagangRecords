@@ -573,12 +573,17 @@ body {
    FOOTER
 ═══════════════════ */
 .site-footer {
-  border-top: var(--rule);
-  padding: 16px var(--pad);
+  position: fixed;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
   font-size: 11px;
   color: var(--dim);
-  display: flex;
-  gap: 20px;
+  pointer-events: none;
+  z-index: 100;
 }
 
 /* ═══════════════════
