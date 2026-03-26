@@ -138,6 +138,35 @@
         align-items: center;
         justify-content: center;
         overflow: hidden;
+        position: relative;
+      }
+      .product-expand-btn {
+        position: absolute; top: 8px; right: 8px;
+        width: 30px; height: 30px;
+        background: rgba(0,0,0,0.55); color: #fff;
+        border: none; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; transition: opacity 0.2s; z-index: 10;
+      }
+      .product-image:hover .product-expand-btn { opacity: 1; }
+      .product-expand-btn:hover { background: rgba(0,0,0,0.8); }
+      .cover-lightbox {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.9);
+        z-index: 1000; display: flex; align-items: center; justify-content: center;
+        opacity: 0; pointer-events: none; transition: opacity 0.22s ease; cursor: pointer;
+      }
+      .cover-lightbox.open { opacity: 1; pointer-events: all; }
+      .cover-lightbox img {
+        width: 1000px; max-width: 95vw; max-height: 95vh;
+        object-fit: contain; display: block; cursor: default;
+        box-shadow: 0 0 80px rgba(0,0,0,0.6);
+      }
+      .cover-lightbox-close {
+        position: absolute; top: 20px; right: 28px;
+        background: none; border: none; color: #fff;
+        font-size: 22px; cursor: pointer; opacity: 0.6;
+        transition: opacity 0.15s; line-height: 1;
+        font-family: "Space Mono", monospace;
       }
 
       .product-image img {
@@ -314,6 +343,9 @@
           <div class="product-grid">
             <div class="product-image">
               <img src="../assets/alt-vinyl-2.png" alt="After All That I'm Still Here [v.3] — 12'' Vinyl" />
+              <button class="product-expand-btn" aria-label="View full size">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1h4v4M5 12H1V8M12 1L7.5 5.5M1 12l4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
             </div>
 
             <div class="product-info">
@@ -357,6 +389,20 @@
   <span>© 2026 NG-X LLC</span>
   <span>© 2026 NovagangRecords</span>
 </footer>
+    <script>
+      (function () {
+        var btn = document.querySelector('.product-expand-btn');
+        var img = document.querySelector('.product-image img');
+        var lb = document.createElement('div');
+        lb.className = 'cover-lightbox';
+        lb.innerHTML = '<button class="cover-lightbox-close" aria-label="Close">&#x2715;</button><img src="' + img.src + '" alt="' + img.alt + '" />';
+        document.body.appendChild(lb);
+        btn.addEventListener('click', function () { lb.classList.add('open'); });
+        lb.querySelector('.cover-lightbox-close').addEventListener('click', function () { lb.classList.remove('open'); });
+        lb.addEventListener('click', function (e) { if (e.target === lb) lb.classList.remove('open'); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
+      })();
+    </script>
     <script src="../js/script.js"></script>
 </body>
 </html>
