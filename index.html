@@ -76,7 +76,8 @@
       if (probe.complete) init(probe.naturalWidth || 180, probe.naturalHeight || 180);
 
       function init(nw, nh) {
-        var W = 180;
+        var isMobile = window.innerWidth <= 720;
+        var W = isMobile ? 92 : 180;
         var H = Math.round(nh * (W / nw));
 
         for (var i = 0; i < COUNT; i++) {
