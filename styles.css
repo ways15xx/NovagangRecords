@@ -570,6 +570,18 @@ body {
 }
 
 /* ═══════════════════
+   FOOTER
+═══════════════════ */
+.site-footer {
+  border-top: var(--rule);
+  padding: 16px var(--pad);
+  font-size: 11px;
+  color: var(--dim);
+  display: flex;
+  gap: 20px;
+}
+
+/* ═══════════════════
    RESPONSIVE
 ═══════════════════ */
 @media (max-width: 1200px) {
