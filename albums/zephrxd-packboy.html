@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PackBoy - Zephrxd</title>
+    <meta name="author" content="NovagangRecords" />
+    <meta name="description" content="PackBoy by Zephrxd - NovagangRecords" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="hdr-inner">
+        <a href="../index.html" class="site-logo">
+          <img src="../assets/imp.png" alt="NovagangRecords" />
+        </a>
+        <nav class="nav-primary">
+          <ul class="nav-list">
+            <li><a href="../pages/releases.html" class="active">releases</a></li>
+            <li><a href="../pages/clothing.html">clothing</a></li>
+            <li><a href="../pages/physicals.html">physicals</a></li>
+            <li><a href="../pages/artists.html">artists</a></li>
+            <li><a href="#">mailing list</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-secondary">
+          <ul class="nav-list">
+            <li><a href="../pages/tos.html">terms of service</a></li>
+            <li><a href="#">cart</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="pg">
+      <div class="pg-content">
+        <a href="../pages/releases.html" class="back-link">&#8592; releases</a>
+        <div class="album-hero">
+          <div class="album-cover">
+            <img src="https://i.scdn.co/image/ab67616d0000b27396c4b02889af5760562969c9" alt="PackBoy" />
+            <button class="cover-expand-btn" aria-label="View full size">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1h4v4M5 12H1V8M12 1L7.5 5.5M1 12l4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="album-info">
+            <div class="album-type">Single</div>
+            <div class="album-title">PackBoy</div>
+            <div class="album-artist">Zephrxd</div>
+            <div class="album-date">2026</div>
+            <div class="streaming-links">
+              <a href="https://open.spotify.com/album/4JVwHHAFfXELlcvHYB41Cc" class="stream-btn" target="_blank" rel="noopener noreferrer">Spotify</a>
+            </div>
+            <div class="tracklist">
+              <div class="tracklist-label">Tracklist</div>
+              <div class="track">
+                <span class="track-num">&#8212;</span>
+                <span class="track-title">View full tracklist on Spotify</span>
+                <span class="track-dur"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>&copy; 2026 NG-X LLC</span>
+      <span>&copy; 2026 NovagangRecords</span>
+    </footer>
+
+    <script>
+      (function () {
+        var btn = document.querySelector('.cover-expand-btn');
+        var img = document.querySelector('.album-cover img');
+        var lb = document.createElement('div');
+        lb.className = 'cover-lightbox';
+        lb.innerHTML = '<button class="cover-lightbox-close" aria-label="Close">&#x2715;</button><img src="' + img.src + '" alt="' + img.alt + '" />';
+        document.body.appendChild(lb);
+        btn.addEventListener('click', function () { lb.classList.add('open'); });
+        lb.querySelector('.cover-lightbox-close').addEventListener('click', function () { lb.classList.remove('open'); });
+        lb.addEventListener('click', function (e) { if (e.target === lb) lb.classList.remove('open'); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
+      })();
+    </script>
+  </body>
+</html>
