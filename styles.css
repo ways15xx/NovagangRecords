@@ -341,6 +341,15 @@ body {
 
 .album-info { padding-top: 4px; }
 
+.album-type {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
 .album-title {
   font-size: 20px;
   font-weight: 700;
