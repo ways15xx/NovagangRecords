@@ -35,10 +35,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: calc(100vh * 16 / 9);
-      height: calc(100vw * 9 / 16);
-      min-width: 100%;
-      min-height: 100%;
+      width: max(100%, calc(100vh * 16 / 9));
+      height: max(100%, calc(100vw * 9 / 16));
       border: none;
     }
     #yt-overlay {
@@ -53,6 +51,7 @@
       user-select: none;
       pointer-events: none;
       z-index: 2;
+      filter: brightness(0) invert(1);
     }
   </style>
 </head>
