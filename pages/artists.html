@@ -4,22 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Artists — NovagangRecords</title>
+    <title>Artists - NovagangRecords</title>
     <meta name="author" content="NovagangRecords" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
     <link rel="stylesheet" href="../styles.css" />
     <style>
+      .ar-card {
+        position: relative;
+      }
+
+      .ar-card.is-trigger {
+        cursor: pointer;
+      }
+
+      .ar-card.is-trigger .ar-meta,
+      .ar-card.is-trigger .ar-socials {
+        pointer-events: none;
+      }
+
       .ar-year {
         font-size: 11px;
         color: var(--dim);
         margin-top: 3px;
       }
+
       .ar-socials {
         display: flex;
+        flex-wrap: wrap;
         gap: 10px;
         margin-top: 12px;
         padding: 0 18px;
       }
+
       .ar-social {
         display: flex;
         align-items: center;
@@ -30,7 +46,12 @@
         color: var(--dim);
         transition: border-color 0.15s, color 0.15s;
       }
-      .ar-social:hover { border-color: #000; color: #000; }
+
+      .ar-social:hover {
+        border-color: #000;
+        color: #000;
+      }
+
       .ar-social svg {
         width: 13px;
         height: 13px;
@@ -40,9 +61,199 @@
         stroke-linecap: round;
         stroke-linejoin: round;
       }
+
       .ar-social.spotify svg,
       .ar-social.apple svg,
-      .ar-social.soundcloud svg { stroke-width: 1.4; }
+      .ar-social.soundcloud svg {
+        stroke-width: 1.4;
+      }
+
+      .artist-panel-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.08);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.22s ease;
+        z-index: 280;
+      }
+
+      .artist-panel-overlay.is-open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .artist-panel {
+        position: fixed;
+        top: 58px;
+        left: 50%;
+        width: min(1120px, calc(100vw - 48px));
+        max-height: calc(100vh - 88px);
+        overflow: auto;
+        background: #fff;
+        border: 1px solid #000;
+        transform: translate(-50%, -36px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.28s ease, opacity 0.22s ease;
+        z-index: 290;
+      }
+
+      .artist-panel.is-open {
+        transform: translate(-50%, 0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .artist-panel-inner {
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        min-height: 520px;
+      }
+
+      .artist-panel-image {
+        border-right: 1px solid #000;
+        background: #f3f3f3;
+      }
+
+      .artist-panel-image img {
+        width: 100%;
+        height: 100%;
+        min-height: 520px;
+        object-fit: cover;
+      }
+
+      .artist-panel-body {
+        padding: 28px 30px 32px;
+      }
+
+      .artist-panel-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 18px;
+      }
+
+      .artist-panel-label {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--dim);
+        margin-bottom: 8px;
+      }
+
+      .artist-panel-name {
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 1.15;
+      }
+
+      .artist-panel-years {
+        font-size: 12px;
+        color: var(--dim);
+        margin-top: 6px;
+      }
+
+      .artist-panel-close {
+        width: 34px;
+        height: 34px;
+        border: 1px solid #000;
+        background: #fff;
+        color: #000;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        line-height: 1;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+
+      .artist-panel-close:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      .artist-panel-bio {
+        border-top: 1px solid rgba(0,0,0,0.15);
+        padding-top: 18px;
+      }
+
+      .artist-panel-bio p {
+        font-size: 12px;
+        line-height: 1.75;
+        color: rgba(0,0,0,0.72);
+        margin-bottom: 14px;
+      }
+
+      .artist-panel-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .artist-panel-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(0,0,0,0.2);
+        color: var(--dim);
+        transition: border-color 0.15s, color 0.15s, background 0.15s;
+      }
+
+      .artist-panel-link:hover {
+        border-color: #000;
+        color: #000;
+        background: rgba(0,0,0,0.03);
+      }
+
+      .artist-panel-link svg {
+        width: 15px;
+        height: 15px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      @media (max-width: 860px) {
+        .artist-panel {
+          width: calc(100vw - 24px);
+          max-height: calc(100vh - 70px);
+        }
+
+        .artist-panel-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .artist-panel-image {
+          border-right: none;
+          border-bottom: 1px solid #000;
+        }
+
+        .artist-panel-image img {
+          min-height: 0;
+          aspect-ratio: 1;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .artist-panel {
+          width: calc(100vw - 16px);
+        }
+
+        .artist-panel-body {
+          padding: 18px 16px 20px;
+        }
+
+        .artist-panel-name {
+          font-size: 22px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -71,15 +282,12 @@
     <main class="pg">
       <div class="pg-content">
         <span class="section-label">Artists</span>
-
         <div class="artists-grid">
-
-          <!-- angelus -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/angelus.jpg" alt="angelus" /></div>
             <div class="ar-meta">
               <p class="ar-name">angelus</p>
-              <p class="ar-year">2020, 2026 — current</p>
+              <p class="ar-year">2020, 2026 - current</p>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -90,13 +298,12 @@
             </div>
           </article>
 
-          <!-- B0YG1RL -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/b0yg1rl.jpeg" alt="B0YG1RL" /></div>
             <div class="ar-meta">
               <p class="ar-name">B0YG1RL</p>
-              <p class="ar-year">2026 — current</p>
-              <a href="../albums/exit-2b.html" class="ar-tag">EXIT 2B — Album</a>
+              <p class="ar-year">2026 - current</p>
+              <a href="../albums/exit-2b.html" class="ar-tag">EXIT 2B - Album</a>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -107,12 +314,11 @@
             </div>
           </article>
 
-          <!-- Exodus1900 -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/exodus.jpg" alt="Exodus1900" /></div>
             <div class="ar-meta">
               <p class="ar-name">Exodus1900</p>
-              <p class="ar-year">2021 — current</p>
+              <p class="ar-year">2021 - current</p>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -123,12 +329,11 @@
             </div>
           </article>
 
-          <!-- gv1nn -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/gv1nn.jpg" alt="gv1nn" /></div>
             <div class="ar-meta">
               <p class="ar-name">gv1nn</p>
-              <p class="ar-year">2019 — current</p>
+              <p class="ar-year">2019 - current</p>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -139,12 +344,11 @@
             </div>
           </article>
 
-          <!-- kasper gem -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/kaspergem.jpg" alt="kasper gem" /></div>
             <div class="ar-meta">
               <p class="ar-name">kasper gem</p>
-              <p class="ar-year">2020 — current</p>
+              <p class="ar-year">2020 - current</p>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -155,12 +359,11 @@
             </div>
           </article>
 
-          <!-- KAY NIVE$ -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/kaynives.jpeg" alt="KAY NIVE$" /></div>
             <div class="ar-meta">
               <p class="ar-name">KAY NIVE$</p>
-              <p class="ar-year">2021 — current</p>
+              <p class="ar-year">2021 - current</p>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -171,13 +374,12 @@
             </div>
           </article>
 
-          <!-- prblm -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/prblm.jpeg" alt="prblm" /></div>
             <div class="ar-meta">
               <p class="ar-name">prblm</p>
-              <p class="ar-year">2018 — current</p>
-              <a href="../albums/i-am-the-temper.html" class="ar-tag">I AM THE TEMPER — Album</a>
+              <p class="ar-year">2018 - current</p>
+              <a href="../albums/i-am-the-temper.html" class="ar-tag">I AM THE TEMPER - Album</a>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -188,12 +390,11 @@
             </div>
           </article>
 
-          <!-- quinn -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/quinn.jpeg" alt="quinn" /></div>
             <div class="ar-meta">
               <p class="ar-name">quinn</p>
-              <p class="ar-year">2019 — 2020, 2023 — current</p>
+              <p class="ar-year">2019 - 2020, 2023 - current</p>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -204,12 +405,11 @@
             </div>
           </article>
 
-          <!-- Trauma -->
-          <article class="ar-card">
+          <article class="ar-card is-trigger" data-artist="Trauma" data-years="2025 - current" data-image="../assets/artists/trauma.jpeg" data-bio-one="Pablo Lopez, known professionally as Trauma or Trauma/00, is a Bolivian American singer, producer, and songwriter based in Alexandria, Virginia. His catalog moves through electronic music, contemporary opera, Brazilian funk, witch house, UK garage, ambience, and other left-field influences with a subversive, melancholic, and hyper-detailed approach." data-bio-two="Across recent work, Trauma has continued shaping a sound that feels both emotionally exposed and sonically disruptive, balancing experimental structures with sharper melody and atmosphere. His current direction points toward something even more emotional and downtempo, expanding the range of his music while keeping the unpredictability that defines it.">
             <div class="ar-img"><img src="../assets/artists/trauma.jpeg" alt="Trauma" /></div>
             <div class="ar-meta">
               <p class="ar-name">Trauma</p>
-              <p class="ar-year">2025 — current</p>
+              <p class="ar-year">2025 - current</p>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -220,13 +420,12 @@
             </div>
           </article>
 
-          <!-- Ways -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/ways.jpg" alt="Ways" /></div>
             <div class="ar-meta">
               <p class="ar-name">Ways</p>
-              <p class="ar-year">2019 — current</p>
-              <a href="../albums/blast-em.html" class="ar-tag">Blast em — Single</a>
+              <p class="ar-year">2019 - current</p>
+              <a href="../albums/blast-em.html" class="ar-tag">Blast em - Single</a>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -237,13 +436,12 @@
             </div>
           </article>
 
-          <!-- Zephrxd -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/zephrxd.jpg" alt="Zephrxd" /></div>
             <div class="ar-meta">
               <p class="ar-name">Zephrxd</p>
-              <p class="ar-year">2021 — current</p>
-              <a href="../albums/after-all-that.html" class="ar-tag">After All That I'm Still Here. — Album</a>
+              <p class="ar-year">2021 - current</p>
+              <a href="../albums/after-all-that.html" class="ar-tag">After All That I'm Still Here. - Album</a>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -254,12 +452,11 @@
             </div>
           </article>
 
-          <!-- Zootzie -->
           <article class="ar-card">
             <div class="ar-img"><img src="../assets/artists/zootzie.jpeg" alt="Zootzie" /></div>
             <div class="ar-meta">
               <p class="ar-name">Zootzie</p>
-              <p class="ar-year">2019 — 2020, 2023 — current</p>
+              <p class="ar-year">2019 - 2020, 2023 - current</p>
             </div>
             <div class="ar-socials">
               <a href="#" class="ar-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
@@ -269,15 +466,44 @@
               <a href="#" class="ar-social soundcloud" aria-label="SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"/></svg></a>
             </div>
           </article>
-
         </div>
       </div>
     </main>
 
+    <div class="artist-panel-overlay" data-artist-overlay></div>
+    <section class="artist-panel" data-artist-panel aria-hidden="true">
+      <div class="artist-panel-inner">
+        <div class="artist-panel-image">
+          <img src="../assets/artists/trauma.jpeg" alt="Trauma" data-artist-panel-image />
+        </div>
+        <div class="artist-panel-body">
+          <div class="artist-panel-top">
+            <div>
+              <div class="artist-panel-label">Artist spotlight</div>
+              <h2 class="artist-panel-name" data-artist-panel-name>Trauma</h2>
+              <p class="artist-panel-years" data-artist-panel-years>2025 - current</p>
+            </div>
+            <button type="button" class="artist-panel-close" data-artist-panel-close aria-label="Close artist panel">&#10005;</button>
+          </div>
+          <div class="artist-panel-bio">
+            <p data-artist-panel-bio-one>Pablo Lopez, known professionally as Trauma or Trauma/00, is a Bolivian American singer, producer, and songwriter based in Alexandria, Virginia. His catalog moves through electronic music, contemporary opera, Brazilian funk, witch house, UK garage, ambience, and other left-field influences with a subversive, melancholic, and hyper-detailed approach.</p>
+            <p data-artist-panel-bio-two>Across recent work, Trauma has continued shaping a sound that feels both emotionally exposed and sonically disruptive, balancing experimental structures with sharper melody and atmosphere. His current direction points toward something even more emotional and downtempo, expanding the range of his music while keeping the unpredictability that defines it.</p>
+          </div>
+          <div class="artist-panel-links">
+            <a href="#" class="artist-panel-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.3" r="0.8" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" class="artist-panel-link" aria-label="X"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></a>
+            <a href="#" class="artist-panel-link" aria-label="Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 10.3c2.8-1 5.8-.8 8.2.6"/><path d="M8.7 13c2.2-.7 4.6-.5 6.5.5"/><path d="M9.6 15.5c1.5-.4 3.1-.3 4.4.4"/></svg></a>
+            <a href="#" class="artist-panel-link" aria-label="Apple Music"><svg viewBox="0 0 24 24"><path d="M15.5 5.5v10.2a2.8 2.8 0 1 1-1.6-2.5V8.2l-5 1.1v8.4a2.8 2.8 0 1 1-1.6-2.5V8l8.2-1.7z"/></svg></a>
+            <a href="#" class="artist-panel-link" aria-label="SoundCloud"><svg viewBox="0 0 24 24"><path d="M6.2 17h10.5a2.8 2.8 0 0 0 .1-5.6 4.7 4.7 0 0 0-9-1.1 3.1 3.1 0 0 0-1.6 5.9z"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer class="site-footer">
-  <span>© 2026 NG-X LLC</span>
-  <span>© 2026 NovagangRecords</span>
-</footer>
+      <span>© 2026 NG-X LLC</span>
+      <span>© 2026 NovagangRecords</span>
+    </footer>
 
     <script>
       (function () {
@@ -293,7 +519,48 @@
         }, { threshold: 0.05 });
         cards.forEach(function (c) { io.observe(c); });
       })();
+
+      (function () {
+        var triggers = document.querySelectorAll('.ar-card[data-artist]');
+        var overlay = document.querySelector('[data-artist-overlay]');
+        var panel = document.querySelector('[data-artist-panel]');
+        var closeBtn = document.querySelector('[data-artist-panel-close]');
+
+        if (!triggers.length || !overlay || !panel || !closeBtn) return;
+
+        var image = document.querySelector('[data-artist-panel-image]');
+        var name = document.querySelector('[data-artist-panel-name]');
+        var years = document.querySelector('[data-artist-panel-years]');
+        var bioOne = document.querySelector('[data-artist-panel-bio-one]');
+        var bioTwo = document.querySelector('[data-artist-panel-bio-two]');
+
+        function closePanel() {
+          overlay.classList.remove('is-open');
+          panel.classList.remove('is-open');
+          panel.setAttribute('aria-hidden', 'true');
+        }
+
+        triggers.forEach(function (trigger) {
+          trigger.addEventListener('click', function () {
+            name.textContent = trigger.getAttribute('data-artist') || '';
+            years.textContent = trigger.getAttribute('data-years') || '';
+            image.src = trigger.getAttribute('data-image') || image.src;
+            image.alt = trigger.getAttribute('data-artist') || image.alt;
+            bioOne.textContent = trigger.getAttribute('data-bio-one') || '';
+            bioTwo.textContent = trigger.getAttribute('data-bio-two') || '';
+            overlay.classList.add('is-open');
+            panel.classList.add('is-open');
+            panel.setAttribute('aria-hidden', 'false');
+          });
+        });
+
+        overlay.addEventListener('click', closePanel);
+        closeBtn.addEventListener('click', closePanel);
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') closePanel();
+        });
+      })();
     </script>
     <script src="../js/script.js"></script>
-</body>
+  </body>
 </html>
