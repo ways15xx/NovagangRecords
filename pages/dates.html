@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dates - NovagangRecords</title>
+    <meta name="author" content="NovagangRecords" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .dates-list {
+        border-top: var(--rule);
+      }
+
+      .date-row {
+        display: grid;
+        grid-template-columns: 160px 1fr auto;
+        align-items: start;
+        gap: 32px;
+        padding: 28px 0;
+        border-bottom: var(--rule);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.38s ease, transform 0.38s ease;
+      }
+      .date-row.in { opacity: 1; transform: none; }
+
+      .date-when {
+        flex-shrink: 0;
+      }
+      .date-day {
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .date-time {
+        font-size: 11px;
+        color: var(--dim);
+        margin-top: 3px;
+      }
+
+      .date-info {}
+      .date-event {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .date-location {
+        font-size: 11px;
+        color: var(--dim);
+        margin-bottom: 10px;
+      }
+      .date-lineup {
+        font-size: 11px;
+        color: var(--dim);
+        line-height: 1.65;
+      }
+      .date-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .date-tag {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        border: var(--rule);
+        padding: 2px 8px;
+        color: var(--dim);
+      }
+
+      .date-action {
+        flex-shrink: 0;
+        text-align: right;
+      }
+      .date-ticket-btn {
+        display: inline-block;
+        border: var(--rule);
+        padding: 9px 18px;
+        font-family: var(--font);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        background: transparent;
+        color: var(--black);
+        transition: background 0.15s, color 0.15s;
+        white-space: nowrap;
+      }
+      .date-ticket-btn:hover { background: var(--black); color: var(--white); }
+      .date-ticket-btn.sold-out { opacity: 0.35; pointer-events: none; }
+
+      .date-status {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--dim);
+        margin-top: 8px;
+        text-align: right;
+      }
+
+      @media (max-width: 720px) {
+        .date-row {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .date-action { text-align: left; }
+        .date-status { text-align: left; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="hdr-inner">
+        <a href="../index.html" class="site-logo">
+          <img src="../assets/imp.png" alt="NovagangRecords" />
+        </a>
+        <nav class="nav-primary">
+          <ul class="nav-list">
+            <li><a href="releases.html">releases</a></li>
+            <li><a href="shop.html">shop</a></li>
+            <li><a href="artists.html">artists</a></li>
+            <li><a href="dates.html" class="active">dates</a></li>
+            <li><a href="#">mailing list</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-secondary">
+          <ul class="nav-list">
+            <li><a href="tos.html">terms of service</a></li>
+            <li><a href="#">cart</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="pg">
+      <div class="pg-content">
+        <span class="section-label">Upcoming Dates</span>
+
+        <div class="dates-list">
+
+          <!-- SURF GANG MIAMI -->
+          <div class="date-row is-trigger">
+            <div class="date-when">
+              <div class="date-day">Sat, Mar 28 2026</div>
+              <div class="date-time">10:00 PM — 4:00 AM EDT</div>
+            </div>
+            <div class="date-info">
+              <div class="date-event">SURF GANG MIAMI</div>
+              <div class="date-location">2060 NW 1st Ave, Miami, FL 33127</div>
+              <div class="date-lineup">Black Kray · evilgiane · Eera · Olswel · Nation · B0YG1RL · BBY Kell · Miavendetta · Xana · Prblm · + Special Guests</div>
+              <div class="date-tags">
+                <span class="date-tag">18+</span>
+                <span class="date-tag">Miami Music Week</span>
+                <span class="date-tag">Ultra After Party</span>
+              </div>
+            </div>
+            <div class="date-action">
+              <a href="#" class="date-ticket-btn">Tickets</a>
+              <div class="date-status">Upcoming</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 NG-X LLC</span>
+      <span>© 2026 NovagangRecords</span>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+      document.querySelectorAll('.date-row.is-trigger').forEach(function (el) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        io.observe(el);
+      });
+    </script>
+  </body>
+</html>
