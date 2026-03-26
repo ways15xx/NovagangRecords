@@ -1,0 +1,90 @@
+# NovagangRecords — Codex Handoff Notes
+Date: 2026-03-25
+
+## Site
+GitHub Pages: https://ways15xx.github.io/NovagangRecords
+Repo: https://github.com/ways15xx/NovagangRecords
+Local: C:/Users/Landon/Desktop/ngngng.ng
+
+## Stack
+Pure HTML / CSS / JS — no frameworks.
+Shared stylesheet: styles.css (root)
+Font: Space Mono
+Colors: --black #000, --white #fff, --dim rgba(0,0,0,0.42), --rule 1px solid #000
+
+## File Structure
+index.html           — DVD screensaver (15 logos, AABB collision), standard header, fixed footer
+styles.css           — all shared styles
+pages/
+  artists.html       — 4-col artist grid (12 artists, no kingfelix)
+  releases.html      — release cards grid (6-col)
+  shop.html          — merged clothing + physicals (CLOTHING / PHYSICALS sections)
+  mailing-list.html
+  terms.html
+albums/
+  exit-2b.html
+  after-all-that.html
+  i-am-the-temper.html
+products/
+  hat.html + vinyl pages (lightbox zoom on product images)
+assets/
+  artists/           — all 12 artist photos
+  imp.png            — logo used for DVD screensaver + header
+  IAmTheTemper.png   — I AM THE TEMPER cover (PNG)
+  AfterAllThatImStillHere..png — Zephrxd cover (PNG)
+
+## Pending / In-Progress Tasks
+
+### 1. Album type label (PARTIALLY DONE — needs verify + commit/push)
+Added .album-type div above .album-title in all 3 album pages via sed.
+CSS added to styles.css:
+  .album-type { font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--dim); font-weight: 400; margin-bottom: 8px; }
+Run: git add albums/ styles.css && git commit -m "add Album type label to all album pages" && git push
+
+### 2. Lightbox / zoom on album covers (TODO)
+- All 3 album pages: add a minimize/maximize button on the cover image
+- Clicking expands cover to full-screen, darkens background overlay
+- Force image to 1000px in zoomed state
+- Same feature needed on product/buy pages for clothing items
+
+### 3. I AM THE TEMPER cover — replace with PNG (TODO)
+- New file: assets/IAmTheTemper.png (already in assets)
+- Update albums/i-am-the-temper.html img src from .jpg to .png
+
+### 4. Shop page — merge clothing + physicals (TODO)
+- Merge pages/clothing.html and pages/physicals.html into pages/shop.html
+- Two sections inside: CLOTHING and PHYSICALS
+- Update all nav links across every page to point to shop.html
+- Move Business Plushie into PHYSICALS section
+
+### 5. Artist page release tags (TODO)
+- Each artist card currently shows their latest release tag (e.g. "EXIT 2B – TBA")
+- Format should be: [release name] – [type: ALBUM / EP / SINGLE]  (not TBA)
+- Update all artist cards with correct type
+
+### 6. Releases page ordering (TODO)
+- Sort release cards by release date (newest first)
+- TBA releases automatically go to the front/top
+
+### 7. Add new releases from Spotify (TODO)
+User provided two Spotify artist pages — pull releases 2024 and up:
+  Ways:    https://open.spotify.com/artist/3nOQZxPKPrewYqWGZTpqDK
+  Artist2: https://open.spotify.com/artist/3pdRI1JLxXHjxBiyLLTmli
+For each release: create album page, add release card, update artist tag on artists page.
+Only latest release shown as tag on artist card.
+
+## CSS Patterns (key)
+.release-grid { display: grid; grid-template-columns: repeat(6, 1fr); }
+.r-card { border-top: var(--rule); border-right: var(--rule); border-bottom: var(--rule); min-width: 0; }
+.r-card:nth-child(6n+1) { border-left: var(--rule); }
+.r-img img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+.artists-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: var(--rule); border-left: var(--rule); }
+.site-footer { display: flex; justify-content: center; gap: 20px; padding: 32px 0 24px; font-size: 11px; color: var(--dim); }
+.site-footer.fixed { position: fixed; bottom: 16px; left: 0; right: 0; }
+
+## Rules
+- Always commit and push after every change
+- No Claude attribution in commits
+- Space Mono font everywhere
+- Black/white editorial minimal design
+- Keep grid borders: border on each card, left border only on 6n+1 cards
