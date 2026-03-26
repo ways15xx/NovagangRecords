@@ -6,136 +6,145 @@
   <title>NovagangRecords</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    #canvas {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .dvd-logo {
+      position: absolute;
+      width: 180px;
+      user-select: none;
+      pointer-events: none;
+    }
+  </style>
 </head>
-<body class="index-body">
+<body>
 
-  <header class="index-header">
-    <div class="index-hdr-inner">
-      <nav class="index-nav">
-        <ul>
+  <header class="site-header">
+    <div class="hdr-inner">
+      <a href="index.html" class="site-logo">
+        <img src="assets/imp.png" alt="NovagangRecords" />
+      </a>
+      <nav class="nav-primary">
+        <ul class="nav-list">
           <li><a href="pages/releases.html">releases</a></li>
           <li><a href="pages/clothing.html">clothing</a></li>
           <li><a href="pages/physicals.html">physicals</a></li>
           <li><a href="pages/artists.html">artists</a></li>
           <li><a href="#">mailing list</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-secondary">
+        <ul class="nav-list">
           <li><a href="pages/tos.html">terms of service</a></li>
+          <li><a href="#">cart</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <div class="index-canvas" id="canvas">
-    <img class="home-logo" src="assets/novagang-records2026.png" alt="NovagangRecords" />
-    <div class="home-logo-spacer"></div>
-  </div>
+  <div id="canvas"></div>
 
   <script>
     (function () {
-      var logo = document.querySelector('.home-logo');
+      var canvas = document.getElementById('canvas');
+      var COUNT  = 5;
+      var SPEED  = 1.8;
+      var logos  = [];
 
-      // Pull logo out of flow and position it fixed
-      var rect = logo.getBoundingClientRect();
-      var x = rect.left;
-      var y = rect.top;
-      var w = rect.width;
+      // Wait for first image to load so we get real dimensions
+      var probe = new Image();
+      probe.src = 'assets/novagang-records2026.png';
+      probe.onload = function () {
+        init(probe.naturalWidth, probe.naturalHeight);
+      };
+      // Fallback if already cached
+      if (probe.complete) init(probe.naturalWidth || 180, probe.naturalHeight || 180);
 
-      // Insert spacer so links don't jump when logo leaves the flow
-      var spacer = document.createElement('div');
-      spacer.style.width  = rect.width  + 'px';
-      spacer.style.height = rect.height + 'px';
-      spacer.style.marginBottom = '10px';
-      logo.parentNode.insertBefore(spacer, logo);
+      function init(nw, nh) {
+        var W = 180;
+        var H = Math.round(nh * (W / nw));
 
-      logo.style.position = 'fixed';
-      logo.style.left = x + 'px';
-      logo.style.top  = y + 'px';
-      logo.style.width = w + 'px';
-      logo.style.margin = '0';
-      logo.style.zIndex = '999';
-      logo.style.willChange = 'transform';
+        for (var i = 0; i < COUNT; i++) {
+          var img = document.createElement('img');
+          img.src = 'assets/novagang-records2026.png';
+          img.className = 'dvd-logo';
+          canvas.appendChild(img);
 
-      var vx = 0, vy = 0;
-      var isDragging = false;
-      var lastX, lastY, lastT;
-      var raf;
+          var angle = (Math.PI * 2 / COUNT) * i + Math.random() * 0.5;
+          logos.push({
+            el: img,
+            x:  Math.random() * (canvas.offsetWidth  - W),
+            y:  Math.random() * (canvas.offsetHeight - H),
+            vx: Math.cos(angle) * SPEED,
+            vy: Math.sin(angle) * SPEED,
+            w:  W,
+            h:  H
+          });
 
-      // Physics constants — floaty feel
-      var DAMPING  = 0.999;  // barely any slowdown — keeps drifting
-      var GRAVITY  = 0;      // no gravity
-      var BOUNCE   = 0.8;    // energy kept on wall bounce
+          img.style.width  = W + 'px';
+          img.style.height = H + 'px';
+        }
 
-      logo.addEventListener('mousedown', onDown);
-      logo.addEventListener('touchstart', onDown, { passive: false });
-
-      function onDown(e) {
-        e.preventDefault();
-        isDragging = true;
-        cancelAnimationFrame(raf);
-        vx = 0; vy = 0;
-        var pt = pointer(e);
-        lastX = pt.x; lastY = pt.y; lastT = Date.now();
-        logo.classList.add('dragging');
-        document.addEventListener('mousemove', onMove);
-        document.addEventListener('touchmove', onMove, { passive: false });
-        document.addEventListener('mouseup', onUp);
-        document.addEventListener('touchend', onUp);
+        requestAnimationFrame(tick);
       }
 
-      function onMove(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        var pt = pointer(e);
-        var now = Date.now();
-        var dt  = Math.max(now - lastT, 1);
-        // Track velocity (px per frame at 60fps)
-        vx = (pt.x - lastX) / dt * 5;
-        vy = (pt.y - lastY) / dt * 5;
-        x += pt.x - lastX;
-        y += pt.y - lastY;
-        lastX = pt.x; lastY = pt.y; lastT = now;
-        setPos();
-      }
+      function tick() {
+        var cw = canvas.offsetWidth;
+        var ch = canvas.offsetHeight;
 
-      function onUp() {
-        isDragging = false;
-        logo.classList.remove('dragging');
-        document.removeEventListener('mousemove', onMove);
-        document.removeEventListener('touchmove', onMove);
-        document.removeEventListener('mouseup', onUp);
-        document.removeEventListener('touchend', onUp);
-        physics();
-      }
+        // Move + wall bounce
+        for (var i = 0; i < logos.length; i++) {
+          var l = logos[i];
+          l.x += l.vx;
+          l.y += l.vy;
 
-      function physics() {
-        vy += GRAVITY;
-        vx *= DAMPING;
-        vy *= DAMPING;
-        x  += vx;
-        y  += vy;
+          if (l.x <= 0)        { l.x = 0;        l.vx =  Math.abs(l.vx); }
+          if (l.x >= cw - l.w) { l.x = cw - l.w; l.vx = -Math.abs(l.vx); }
+          if (l.y <= 0)        { l.y = 0;        l.vy =  Math.abs(l.vy); }
+          if (l.y >= ch - l.h) { l.y = ch - l.h; l.vy = -Math.abs(l.vy); }
 
-        var lw = logo.offsetWidth;
-        var lh = logo.offsetHeight;
-        var maxX = window.innerWidth  - lw;
-        var maxY = window.innerHeight - lh;
+          l.el.style.left = l.x + 'px';
+          l.el.style.top  = l.y + 'px';
+        }
 
-        if (x < 0)    { x = 0;    vx =  Math.abs(vx) * BOUNCE; }
-        if (x > maxX) { x = maxX; vx = -Math.abs(vx) * BOUNCE; }
-        if (y < 0)    { y = 0;    vy =  Math.abs(vy) * BOUNCE; }
-        if (y > maxY) { y = maxY; vy = -Math.abs(vy) * BOUNCE; }
+        // Logo-to-logo collision (AABB)
+        for (var i = 0; i < logos.length; i++) {
+          for (var j = i + 1; j < logos.length; j++) {
+            var a = logos[i], b = logos[j];
 
-        setPos();
+            if (a.x < b.x + b.w && a.x + a.w > b.x &&
+                a.y < b.y + b.h && a.y + a.h > b.y) {
 
-        raf = requestAnimationFrame(physics);
-      }
+              // Swap velocities
+              var tvx = a.vx; a.vx = b.vx; b.vx = tvx;
+              var tvy = a.vy; a.vy = b.vy; b.vy = tvy;
 
-      function setPos() {
-        logo.style.left = x + 'px';
-        logo.style.top  = y + 'px';
-      }
+              // Separate so they don't stick
+              var ox = (a.x + a.w / 2) - (b.x + b.w / 2);
+              var oy = (a.y + a.h / 2) - (b.y + b.h / 2);
+              if (Math.abs(ox) > Math.abs(oy)) {
+                if (ox > 0) { a.x = b.x + b.w + 1; }
+                else        { b.x = a.x + a.w + 1; }
+              } else {
+                if (oy > 0) { a.y = b.y + b.h + 1; }
+                else        { b.y = a.y + a.h + 1; }
+              }
+            }
+          }
+        }
 
-      function pointer(e) {
-        return e.touches ? { x: e.touches[0].clientX, y: e.touches[0].clientY }
-                         : { x: e.clientX,             y: e.clientY };
+        requestAnimationFrame(tick);
       }
     })();
   </script>
