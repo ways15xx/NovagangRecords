@@ -31,6 +31,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body.mobile-nav-open {
+  overflow: hidden;
+}
+
 /* ── Animations ── */
 @keyframes hdrIn {
   from { opacity: 0; transform: translateY(-6px); }
@@ -72,6 +76,78 @@ body {
 
 .nav-primary { flex: 0 0 auto; }
 .nav-secondary { flex: 0 0 auto; margin-left: auto; }
+
+.mobile-nav-toggle {
+  display: none;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 34px;
+  border: var(--rule);
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.15s, color 0.15s;
+}
+
+.mobile-nav-toggle:hover,
+.mobile-nav-toggle:focus-visible,
+.mobile-nav-toggle.is-open {
+  background: var(--black);
+  color: var(--white);
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.72);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  z-index: 250;
+}
+
+.mobile-nav-panel {
+  position: fixed;
+  top: 58px;
+  left: 0;
+  right: 0;
+  border-bottom: var(--rule);
+  background: var(--white);
+  padding: 16px var(--pad) 22px;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 260;
+}
+
+.mobile-nav-panel.is-open,
+.mobile-nav-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-panel.is-open { transform: none; }
+
+.mobile-nav-list { display: grid; gap: 10px; }
+
+.mobile-nav-link {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--black);
+  padding: 6px 0;
+}
+
+.mobile-nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 .nav-list {
   display: flex;
@@ -170,6 +246,7 @@ body {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  line-height: 1.35;
 }
 .r-artist { font-size: 11px; color: var(--dim); margin-top: 3px; }
 
@@ -318,6 +395,12 @@ body {
   border: var(--rule);
   padding: 2px 8px;
   color: var(--dim);
+}
+
+.ar-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* ═══════════════════
@@ -513,6 +596,7 @@ body {
 .product-price { font-size: 15px; margin-bottom: 28px; }
 
 .product-desc { font-size: 12px; line-height: 1.7; color: var(--dim); margin-bottom: 28px; }
+.product-desc li { margin-left: 18px; }
 
 .size-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 10px; }
 
@@ -689,30 +773,97 @@ body {
 @media (max-width: 1200px) {
   .release-grid { grid-template-columns: repeat(4, 1fr); }
   .album-hero { grid-template-columns: 280px 1fr; gap: 48px; }
+  .artists-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 960px) {
   :root { --pad: 24px; }
   .hdr-inner { gap: 20px; }
   .nav-list { gap: 18px; }
+  .release-grid { grid-template-columns: repeat(3, 1fr); }
   .clothing-grid { grid-template-columns: repeat(2, 1fr); }
   .product-layout { grid-template-columns: 1fr; gap: 40px; }
   .album-hero { grid-template-columns: 1fr; gap: 32px; }
   .album-cover { max-width: 360px; }
   .more-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-img-wrap { max-width: 520px; }
+}
+
+@media (max-width: 860px) {
+  .hdr-inner {
+    height: 58px;
+    justify-content: space-between;
+  }
+
+  .nav-primary,
+  .nav-secondary {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: inline-flex;
+  }
 }
 
 @media (max-width: 720px) {
   :root { --pad: 16px; }
-  .release-grid { grid-template-columns: repeat(3, 1fr); }
+  .pg-content {
+    padding-top: 36px;
+    padding-bottom: 88px;
+  }
+  .release-grid { grid-template-columns: repeat(2, 1fr); }
   .artists-grid { grid-template-columns: repeat(2, 1fr); }
   .physical-grid { grid-template-columns: repeat(2, 1fr); }
-  .nav-list { gap: 14px; }
+  .album-title,
+  .product-name { font-size: 18px; }
+  .streaming-links { gap: 8px; }
+  .stream-btn {
+    flex: 1 1 calc(50% - 8px);
+    text-align: center;
+    min-width: 0;
+  }
+  .track {
+    gap: 10px;
+    font-size: 11px;
+  }
+  .site-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .site-footer.fixed {
+    position: static;
+    padding: 18px 0 22px;
+    pointer-events: auto;
+  }
+  .index-body {
+    overflow: auto;
+  }
+  .index-canvas {
+    min-height: calc(100vh - 58px - 84px);
+  }
+  .dvd-logo { width: 140px !important; height: auto !important; }
 }
 
 @media (max-width: 480px) {
+  .hdr-inner { padding: 0 12px; }
+  .site-logo img { height: 32px; }
+  .mobile-nav-panel {
+    top: 58px;
+    padding: 14px 12px 18px;
+  }
   .release-grid { grid-template-columns: repeat(2, 1fr); }
   .clothing-grid { grid-template-columns: 1fr; }
   .physical-grid { grid-template-columns: 1fr; }
-  .artists-grid { grid-template-columns: repeat(2, 1fr); }
+  .artists-grid { grid-template-columns: 1fr; }
+  .more-grid { grid-template-columns: 1fr; }
+  .album-cover { max-width: 100%; }
+  .r-meta,
+  .cl-meta,
+  .ph-meta,
+  .ar-meta { padding-left: 12px; padding-right: 12px; }
+  .ar-socials { padding-left: 12px !important; padding-right: 12px !important; }
+  .stream-btn { flex-basis: 100%; }
+  .product-desc { font-size: 11px; }
+  .product-desc li { margin-left: 16px; }
 }
