@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>clothing - NovagangRecords</title>
+    <title>shop - NovagangRecords</title>
     <meta name="author" content="NovagangRecords" />
-    <meta name="description" content="NovagangRecords clothing" />
+    <meta name="description" content="NovagangRecords shop" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
     <link rel="stylesheet" href="../styles.css" />
   </head>
@@ -19,7 +19,7 @@
         <nav class="nav-primary">
           <ul class="nav-list">
             <li><a href="releases.html">releases</a></li>
-            <li><a href="shop.html">shop</a></li>
+            <li><a href="shop.html" class="active">shop</a></li>
             <li><a href="artists.html">artists</a></li>
             <li><a href="#">mailing list</a></li>
           </ul>
@@ -35,6 +35,7 @@
 
     <main class="pg">
       <div class="pg-content">
+
         <span class="section-label">Clothing</span>
         <div class="clothing-grid">
 
@@ -138,6 +139,48 @@
           </div>
 
         </div>
+
+        <span class="section-label" style="margin-top: 80px; display: block;">Physicals</span>
+        <div class="physical-grid">
+
+          <div class="ph-card">
+            <a href="../products/vinyl-after-all-that.html">
+              <div class="ph-img"><img src="../assets/vinyl-1.png" alt="After All That I'm Still Here" /></div>
+              <div class="ph-meta">
+                <div class="ph-artist">Zephrxd</div>
+                <div class="ph-name">After All That I'm Still Here</div>
+                <div class="ph-format">12'' Vinyl</div>
+                <div class="ph-price">$44.00</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="ph-card">
+            <a href="../products/vinyl-after-all-that-v2.html">
+              <div class="ph-img"><img src="../assets/alt-vinyl-1.png" alt="After All That I'm Still Here [v.2]" /></div>
+              <div class="ph-meta">
+                <div class="ph-artist">Zephrxd</div>
+                <div class="ph-name">After All That I'm Still Here [v.2]</div>
+                <div class="ph-format">12'' Vinyl</div>
+                <div class="ph-price">$44.00</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="ph-card">
+            <a href="../products/vinyl-after-all-that-v3.html">
+              <div class="ph-img"><img src="../assets/alt-vinyl-2.png" alt="After All That I'm Still Here [v.3]" /></div>
+              <div class="ph-meta">
+                <div class="ph-artist">Zephrxd</div>
+                <div class="ph-name">After All That I'm Still Here [v.3]</div>
+                <div class="ph-format">12'' Vinyl</div>
+                <div class="ph-price">$50.00</div>
+              </div>
+            </a>
+          </div>
+
+        </div>
+
       </div>
     </main>
 
@@ -148,17 +191,16 @@
 
     <script>
 (function(){
-  var cards = document.querySelectorAll('.cl-card');
+  var allCards = document.querySelectorAll('.cl-card, .ph-card');
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
-        var i = Array.from(cards).indexOf(e.target);
-        setTimeout(function(){ e.target.classList.add('in'); }, (i % 4) * 70);
+        e.target.classList.add('in');
         io.unobserve(e.target);
       }
     });
   }, {threshold: 0.05});
-  cards.forEach(function(c){ io.observe(c); });
+  allCards.forEach(function(c){ io.observe(c); });
 })();
     </script>
   </body>
