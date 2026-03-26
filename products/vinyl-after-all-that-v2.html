@@ -6,393 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>After All That I'm Still Here [v.2] — 12'' Vinyl - NovagangRecords</title>
     <meta name="author" content="NovagangRecords" />
-    <link rel="stylesheet" href="../releases_files/minimal-dark-styles-3364344753cbc319396e9d17916dcc1a.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
-    <style>
-      :root {
-        --ink: rgb(0, 0, 0);
-        --border: rgba(0, 0, 0, 0.22);
-      }
-
-      * { box-sizing: border-box; }
-
-      html, body {
-        margin: 0;
-        min-height: 100%;
-        background: #fff;
-      }
-
-      body {
-        background: #fff !important;
-        color: var(--ink) !important;
-        font-family: "Space Mono", "Courier New", monospace !important;
-        font-size: 14px;
-        line-height: 1.35;
-      }
-
-      body::after, body::before { display: none !important; }
-
-      a { color: inherit; text-decoration: none; }
-
-      ul { list-style: none; margin: 0; padding: 0; }
-
-      .page { min-height: 100vh; }
-
-      .inner {
-        max-width: 1480px;
-        margin: 0 auto;
-        padding: 0 32px;
-      }
-
-      .header {
-        background: #fff;
-        border-top: 1px solid rgba(0, 0, 0, 0.95);
-      }
-
-      .header .inner {
-        display: flex;
-        align-items: center;
-        gap: 26px;
-        min-height: 72px;
-      }
-
-      .logo-link {
-        flex: 0 0 auto;
-        display: inline-flex;
-        align-items: center;
-      }
-
-      .logo-img {
-        display: block;
-        width: auto;
-        height: 42px;
-      }
-
-      .nav { flex: 0 1 auto; min-width: 0; }
-
-      .nav-right { margin-left: auto; }
-
-      .nav-list {
-        display: flex;
-        align-items: center;
-        gap: 22px;
-        white-space: nowrap;
-      }
-
-      .nav-list a {
-        display: inline-block;
-        line-height: 1;
-        color: var(--ink) !important;
-        background: transparent !important;
-        text-decoration: none !important;
-      }
-
-      .nav-list a:visited,
-      .nav-list a:hover,
-      .nav-list a:active,
-      .nav-list a:focus {
-        color: var(--ink) !important;
-        background: transparent !important;
-      }
-
-      .nav-list a.active { position: relative; }
-
-      .nav-list a.active::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 100%;
-        bottom: -4px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.95);
-      }
-
-      @keyframes headerIn {
-        from { opacity: 0; transform: translateY(-8px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes contentIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
-      }
-
-      .header { animation: headerIn 0.4s ease forwards; }
-
-      .content {
-        padding: 120px 0 56px;
-        animation: contentIn 0.5s ease 0.15s both;
-      }
-
-      .product-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 64px;
-        align-items: start;
-      }
-
-      .product-image {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        background: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
-      }
-      .product-expand-btn {
-        position: absolute; top: 8px; right: 8px;
-        width: 30px; height: 30px;
-        background: rgba(0,0,0,0.55); color: #fff;
-        border: none; cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        opacity: 0; transition: opacity 0.2s; z-index: 10;
-      }
-      .product-image:hover .product-expand-btn { opacity: 1; }
-      .product-expand-btn:hover { background: rgba(0,0,0,0.8); }
-      .cover-lightbox {
-        position: fixed; inset: 0; background: rgba(0,0,0,0.9);
-        z-index: 1000; display: flex; align-items: center; justify-content: center;
-        opacity: 0; pointer-events: none; transition: opacity 0.22s ease; cursor: pointer;
-      }
-      .cover-lightbox.open { opacity: 1; pointer-events: all; }
-      .cover-lightbox img {
-        width: 1000px; max-width: 95vw; max-height: 95vh;
-        object-fit: contain; display: block; cursor: default;
-        box-shadow: 0 0 80px rgba(0,0,0,0.6);
-      }
-      .cover-lightbox-close {
-        position: absolute; top: 20px; right: 28px;
-        background: none; border: none; color: #fff;
-        font-size: 22px; cursor: pointer; opacity: 0.6;
-        transition: opacity 0.15s; line-height: 1;
-        font-family: "Space Mono", monospace;
-      }
-
-      .product-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        display: block;
-      }
-
-      .product-info h1 {
-        font-size: 22px;
-        font-weight: normal;
-        margin: 0 0 6px;
-      }
-
-      .product-artist {
-        font-size: 12px;
-        margin: 0 0 16px;
-        opacity: 0.7;
-      }
-
-      .product-divider {
-        border: none;
-        border-top: 1px solid var(--border);
-        margin: 0 0 16px;
-      }
-
-      .product-type-price {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 13px;
-        margin-bottom: 20px;
-      }
-
-      .product-price { font-weight: 700; }
-
-      .product-details {
-        list-style: disc;
-        padding-left: 18px;
-        margin: 0 0 8px;
-        font-size: 13px;
-        line-height: 1.7;
-      }
-
-      .product-details li { margin-bottom: 2px; }
-
-      .add-to-cart {
-        width: 100%;
-        padding: 14px;
-        background: var(--ink);
-        color: #fff;
-        border: none;
-        font-family: "Space Mono", "Courier New", monospace;
-        font-size: 14px;
-        cursor: pointer;
-        margin-top: 24px;
-        transition: opacity 0.15s ease;
-      }
-
-      .add-to-cart:hover { opacity: 0.85; }
-
-      .back-link {
-        display: inline-block;
-        margin-top: 14px;
-        font-size: 12px;
-        opacity: 0.65;
-        transition: opacity 0.15s ease;
-      }
-
-      .back-link:hover { opacity: 1; }
-
-      .more-from {
-        margin-top: 80px;
-        padding-top: 32px;
-        border-top: 1px solid var(--border);
-      }
-
-      .more-from-heading {
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: rgba(0, 0, 0, 0.5);
-        margin: 0 0 20px;
-        font-weight: normal;
-      }
-
-      .more-from-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0 16px;
-      }
-
-      .more-from-card { display: block; }
-
-      .more-from-card-image {
-        aspect-ratio: 1 / 1;
-        background: #fff;
-        overflow: hidden;
-      }
-
-      .more-from-card-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-
-      .more-from-card p {
-        margin: 6px 0 2px;
-        font-size: 13px;
-      }
-
-      .more-from-card .price {
-        color: rgba(0, 0, 0, 0.6);
-        font-size: 12px;
-      }
-
-      @media (max-width: 900px) {
-        .inner { padding: 0 24px; }
-
-        .header .inner {
-          flex-wrap: wrap;
-          gap: 14px;
-          padding-top: 14px;
-          padding-bottom: 14px;
-        }
-
-        .nav-right { margin-left: 0; }
-
-        .nav-list { flex-wrap: wrap; gap: 14px; }
-
-        .content { padding-top: 64px; }
-
-        .product-grid {
-          grid-template-columns: 1fr;
-          gap: 32px;
-        }
-
-        .more-from-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 16px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
-    <div class="page">
-      <header class="header">
-        <div class="inner">
-          <a href="../index.html" class="logo-link" aria-label="NovagangRecords home">
-            <img src="../assets/imp.png" alt="NovagangRecords" class="logo-img" />
-          </a>
+    <header class="site-header">
+      <div class="hdr-inner">
+        <a href="../index.html" class="site-logo">
+          <img src="../assets/imp.png" alt="NovagangRecords" />
+        </a>
+        <nav class="nav-primary">
+          <ul class="nav-list">
+            <li><a href="../pages/releases.html">releases</a></li>
+            <li><a href="../pages/shop.html" class="active">shop</a></li>
+            <li><a href="../pages/artists.html">artists</a></li>
+            <li><a href="#">mailing list</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-secondary">
+          <ul class="nav-list">
+            <li><a href="../pages/tos.html">terms of service</a></li>
+            <li><a href="#">cart</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-          <nav class="nav" aria-label="Primary">
-            <ul class="nav-list">
-              <li><a href="../pages/releases.html">releases</a></li>
-              <li><a href="../pages/shop.html" class="active">shop</a></li>
-              <li><a href="../pages/artists.html">artists</a></li>
-              <li><a href="#">mailing list</a></li>
-            </ul>
-          </nav>
-
-          <nav class="nav nav-right" aria-label="Account">
-            <ul class="nav-list">
-              <li><a href="../pages/tos.html">terms of service</a></li>
-              <li><a href="#">cart</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
-      <main class="content">
-        <div class="inner">
-          <div class="product-grid">
-            <div class="product-image">
-              <img src="../assets/alt-vinyl-1.png" alt="After All That I'm Still Here [v.2] — 12'' Vinyl" />
-              <button class="product-expand-btn" aria-label="View full size">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1h4v4M5 12H1V8M12 1L7.5 5.5M1 12l4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-            </div>
-
-            <div class="product-info">
-              <h1>After All That I'm Still Here [v.2]</h1>
-              <p class="product-artist">Zephrxd</p>
-              <hr class="product-divider" />
-              <div class="product-type-price">
-                <span>12'' Vinyl</span>
-                <span class="product-price">$44.00</span>
-              </div>
-
-              <button class="add-to-cart">Add to Cart</button>
-              <a href="../pages/shop.html" class="back-link">← shop</a>
-            </div>
+    <main class="pg">
+      <div class="pg-content">
+        <a href="../pages/shop.html" class="back-link">← shop</a>
+        <div class="product-layout">
+          <div class="product-img-wrap">
+            <img src="../assets/alt-vinyl-1.png" alt="After All That I'm Still Here [v.2] — 12'' Vinyl" />
+            <button class="product-expand-btn" aria-label="View full size">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1h4v4M5 12H1V8M12 1L7.5 5.5M1 12l4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
-
-          <div class="more-from">
-            <p class="more-from-heading">More Physicals</p>
-            <div class="more-from-grid">
-              <a href="vinyl-after-all-that.html" class="more-from-card">
-                <div class="more-from-card-image">
-                  <img src="../assets/vinyl-1.png" alt="After All That I'm Still Here" />
-                </div>
-                <p>After All That I'm Still Here</p>
-                <p class="price">$44.00</p>
-              </a>
-              <a href="vinyl-after-all-that-v3.html" class="more-from-card">
-                <div class="more-from-card-image">
-                  <img src="../assets/alt-vinyl-2.png" alt="After All That I'm Still Here [v.3]" />
-                </div>
-                <p>After All That I'm Still Here [v.3]</p>
-                <p class="price">$50.00</p>
-              </a>
-            </div>
+          <div class="product-info">
+            <div class="product-brand">NOVAGANG</div>
+            <div class="product-name">After All That I'm Still Here [v.2]</div>
+            <div class="product-price">$44.00</div>
+            <ul class="product-desc">
+              <li>Zephrxd — After All That I'm Still Here.</li>
+              <li>12'' Vinyl — Alternate Edition v.2</li>
+              <li>Delivers: TBD</li>
+            </ul>
+            <button class="add-to-cart">Add to Cart</button>
           </div>
         </div>
-      </main>
-    </div>
+
+        <div class="more-section">
+          <div class="more-label">More Physicals</div>
+          <div class="more-grid">
+            <div class="more-card">
+              <a href="vinyl-after-all-that.html">
+                <div class="more-card-img"><img src="../assets/vinyl-1.png" alt="After All That I'm Still Here" /></div>
+                <div class="more-card-meta">
+                  <div class="more-card-name">After All That I'm Still Here</div>
+                  <div class="more-card-price">$44.00</div>
+                </div>
+              </a>
+            </div>
+            <div class="more-card">
+              <a href="vinyl-after-all-that-v3.html">
+                <div class="more-card-img"><img src="../assets/alt-vinyl-2.png" alt="After All That I'm Still Here [v.3]" /></div>
+                <div class="more-card-meta">
+                  <div class="more-card-name">After All That I'm Still Here [v.3]</div>
+                  <div class="more-card-price">$50.00</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <footer class="site-footer">
-  <span>© 2026 NG-X LLC</span>
-  <span>© 2026 NovagangRecords</span>
-</footer>
+      <span>© 2026 NG-X LLC</span>
+      <span>© 2026 NovagangRecords</span>
+    </footer>
+
     <script>
       (function () {
         var btn = document.querySelector('.product-expand-btn');
-        var img = document.querySelector('.product-image img');
+        var img = document.querySelector('.product-img-wrap img');
         var lb = document.createElement('div');
         lb.className = 'cover-lightbox';
         lb.innerHTML = '<button class="cover-lightbox-close" aria-label="Close">&#x2715;</button><img src="' + img.src + '" alt="' + img.alt + '" />';
@@ -404,5 +101,5 @@
       })();
     </script>
     <script src="../js/script.js"></script>
-</body>
+  </body>
 </html>
