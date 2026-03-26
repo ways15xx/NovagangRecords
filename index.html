@@ -19,12 +19,40 @@
       flex: 1;
       position: relative;
       overflow: hidden;
+      background: #000;
+    }
+    #yt-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    #yt-bg iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100vh * 16 / 9);
+      height: calc(100vw * 9 / 16);
+      min-width: 100%;
+      min-height: 100%;
+      border: none;
+    }
+    #yt-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      cursor: pointer;
     }
     .dvd-logo {
       position: absolute;
       width: 180px;
       user-select: none;
       pointer-events: none;
+      z-index: 2;
     }
   </style>
 </head>
@@ -53,7 +81,12 @@
     </div>
   </header>
 
-  <div id="canvas"></div>
+  <div id="canvas">
+    <div id="yt-bg">
+      <iframe src="https://www.youtube.com/embed/TgCsLTON398?autoplay=1&mute=1&loop=1&playlist=TgCsLTON398&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <a id="yt-overlay" href="https://www.youtube.com/watch?v=TgCsLTON398" target="_blank" aria-label="Watch on YouTube"></a>
+  </div>
 
   <footer class="site-footer fixed">
   <span>© 2026 NG-X LLC</span>
