@@ -140,6 +140,7 @@ body {
 .r-card {
   border-right: var(--rule);
   border-bottom: var(--rule);
+  min-width: 0;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.38s ease, transform 0.38s ease;
