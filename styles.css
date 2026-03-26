@@ -133,11 +133,10 @@ body {
 .release-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  border-top: var(--rule);
-  border-left: var(--rule);
 }
 
 .r-card {
+  border-top: var(--rule);
   border-right: var(--rule);
   border-bottom: var(--rule);
   min-width: 0;
@@ -146,6 +145,7 @@ body {
   transition: opacity 0.38s ease, transform 0.38s ease;
 }
 .r-card.in { opacity: 1; transform: none; }
+.r-card:nth-child(6n+1) { border-left: var(--rule); }
 .r-card a { display: block; }
 
 .r-img {
