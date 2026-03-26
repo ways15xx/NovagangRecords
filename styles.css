@@ -378,8 +378,8 @@ body {
   pointer-events: all;
 }
 .cover-lightbox img {
-  max-width: min(80vw, 700px);
-  max-height: 80vh;
+  max-width: min(90vw, 1000px);
+  max-height: 90vh;
   object-fit: contain;
   display: block;
   cursor: default;
